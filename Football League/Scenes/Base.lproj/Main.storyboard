@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Leugues View Controller-->
+        <!--Football League-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LeuguesViewController" customModule="Football_League" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,33 +18,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9bo-ef-loK">
-                                <rect key="frame" x="0.0" y="32" width="375" height="667"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9bo-ef-loK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="leagueCell" rowHeight="172" id="ZFC-pD-OSi" customClass="LeagueCell" customModule="Football_League" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="172"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZFC-pD-OSi" id="STS-fj-Ptm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="171.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="172"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8X-Kc-gcJ">
                                                     <rect key="frame" x="5" y="5" width="365" height="161.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQL-Kz-8Vl">
-                                                            <rect key="frame" x="20" y="10" width="42" height="141.5"/>
+                                                            <rect key="frame" x="20" y="10" width="48" height="110.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="20 team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zof-6M-lQv">
+                                                            <rect key="frame" x="20" y="130.5" width="212" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="50 match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hat-eM-GAn">
+                                                            <rect key="frame" x="272" y="130.5" width="73" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="hat-eM-GAn" secondAttribute="bottom" constant="10" id="AKJ-L8-5Ph"/>
+                                                        <constraint firstItem="Zof-6M-lQv" firstAttribute="leading" secondItem="q8X-Kc-gcJ" secondAttribute="leading" constant="20" id="E9i-AG-pdL"/>
+                                                        <constraint firstItem="hat-eM-GAn" firstAttribute="leading" secondItem="Zof-6M-lQv" secondAttribute="trailing" constant="40" id="HtE-8r-aSc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Zof-6M-lQv" secondAttribute="bottom" constant="10" id="KZD-OK-C0u"/>
+                                                        <constraint firstItem="Zof-6M-lQv" firstAttribute="top" secondItem="PQL-Kz-8Vl" secondAttribute="bottom" constant="10" id="Z60-Dt-sXt"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PQL-Kz-8Vl" secondAttribute="trailing" constant="20" id="ZCL-GI-9tg"/>
+                                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="hat-eM-GAn" secondAttribute="trailing" constant="20" id="aiq-dm-d4M"/>
                                                         <constraint firstItem="PQL-Kz-8Vl" firstAttribute="top" secondItem="q8X-Kc-gcJ" secondAttribute="top" constant="10" id="eHI-7B-cb8"/>
                                                         <constraint firstItem="PQL-Kz-8Vl" firstAttribute="leading" secondItem="q8X-Kc-gcJ" secondAttribute="leading" constant="20" id="ldq-J7-W7u"/>
-                                                        <constraint firstAttribute="bottom" secondItem="PQL-Kz-8Vl" secondAttribute="bottom" constant="10" id="zPU-Wh-V7Y"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -57,6 +86,8 @@
                                         <connections>
                                             <outlet property="containerView" destination="q8X-Kc-gcJ" id="bMT-aH-2ae"/>
                                             <outlet property="leagueNameLabel" destination="PQL-Kz-8Vl" id="ALw-cO-CNs"/>
+                                            <outlet property="matchCountLabel" destination="hat-eM-GAn" id="HHT-25-teU"/>
+                                            <outlet property="teamsCountLabel" destination="Zof-6M-lQv" id="47k-j9-48d"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -68,14 +99,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="9bo-ef-loK" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="2z5-He-cvI"/>
+                            <constraint firstItem="9bo-ef-loK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2z5-He-cvI"/>
                             <constraint firstItem="9bo-ef-loK" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Vuy-yx-4bq"/>
                             <constraint firstItem="9bo-ef-loK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="fGS-y1-F2K"/>
-                            <constraint firstItem="9bo-ef-loK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xX3-Pu-Rxv"/>
+                            <constraint firstItem="9bo-ef-loK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xX3-Pu-Rxv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qoL-gY-e5T"/>
+                    <navigationItem key="navigationItem" title="Football League" id="qoL-gY-e5T"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="9bo-ef-loK" id="ZoJ-mb-vQZ"/>
                     </connections>
