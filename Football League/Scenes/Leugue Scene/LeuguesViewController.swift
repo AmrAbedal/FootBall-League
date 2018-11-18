@@ -13,19 +13,39 @@ protocol LeagesView: class  {
 }
 
 class LeuguesViewController: UIViewController {
-private var presenter = DefaultLeaguesPresenter()
+    
+    @IBOutlet weak var leaguesTableView: UITableView!
+    
+    private var presenter = DefaultLeaguesPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLeaguesTableview()
         presenter.attach(view: self)
         presenter.viewDidLoad()
+    }
+    private func setupLeaguesTableview() {
+        leaguesTableView.estimatedRowHeight = 100
+        leaguesTableView.rowHeight = UITableViewAutomaticDimension
     }
 }
 
 extension LeuguesViewController: LeagesView {
     func updateData() {
         print("data updated successfully")
+        leaguesTableView.reloadData()
     }
     
+}
+extension LeuguesViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     return presenter.numOfLeages()
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let leagueCell = tableView.dequeueReusableCell(withIdentifier: LeagueCell.identifier) as! LeagueCell
+        leagueCell.leagueNameLabel.text = presenter.leagueNameForIndex(index: indexPath.row)
+        return leagueCell
+    }
 }
 

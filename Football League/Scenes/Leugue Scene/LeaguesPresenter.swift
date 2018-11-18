@@ -12,13 +12,26 @@ import  RealmSwift
 protocol LeaguesPresenter: class {
     func attach(view: LeagesView)
     func viewDidLoad()
+    func numOfLeages() -> Int
+    func leagueNameForIndex(index: Int) -> String
+    
 }
 
 class DefaultLeaguesPresenter: LeaguesPresenter {
+    func leagueNameForIndex(index: Int) -> String {
+        return leagues[index].name ?? ""
+    }
+    
+    func numOfLeages() -> Int {
+        return leagues.count
+    }
+    
+    
+    
     
     private var leagues = List<League>()
     
-    let networkmanager = NetworkManager.shared
+   private let networkmanager = NetworkManager.shared
     
     func viewDidLoad() {
         
