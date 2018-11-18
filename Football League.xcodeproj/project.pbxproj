@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		95B2B3E51EB958689CD0895F /* Pods_Football_League.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E043CA13ECB3D00FA80FF773 /* Pods_Football_League.framework */; };
 		A987959FA319DD85EA21B835 /* Pods_Football_LeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C643FA2B798BD7239A769A02 /* Pods_Football_LeagueTests.framework */; };
+		B667814021A1B33F003FA7DF /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667813F21A1B33F003FA7DF /* LeaguesPresenter.swift */; };
 		B6E29AFC21A157320004D95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFB21A157320004D95B /* AppDelegate.swift */; };
 		B6E29AFE21A157320004D95B /* LeuguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFD21A157320004D95B /* LeuguesViewController.swift */; };
 		B6E29B0121A157320004D95B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29AFF21A157320004D95B /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		022617E3D9D6C1011621CE49 /* Pods-Football League.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Football League.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Football League/Pods-Football League.debug.xcconfig"; sourceTree = "<group>"; };
 		41E6884C1A8B020E422A496E /* Pods-Football LeagueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Football LeagueTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Football LeagueTests/Pods-Football LeagueTests.debug.xcconfig"; sourceTree = "<group>"; };
 		82EB89A478FC74522D52DF9F /* Pods-Football League.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Football League.release.xcconfig"; path = "Pods/Target Support Files/Pods-Football League/Pods-Football League.release.xcconfig"; sourceTree = "<group>"; };
+		B667813F21A1B33F003FA7DF /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesPresenter.swift; sourceTree = "<group>"; };
 		B6E29AF821A157320004D95B /* Football League.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Football League.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29AFB21A157320004D95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E29AFD21A157320004D95B /* LeuguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeuguesViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				B6E29AFD21A157320004D95B /* LeuguesViewController.swift */,
+				B667813F21A1B33F003FA7DF /* LeaguesPresenter.swift */,
 			);
 			path = "Leugue Scene";
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			files = (
 				B6E29B2E21A16CC50004D95B /* Leugue.swift in Sources */,
 				B6E29B1F21A1596C0004D95B /* NetworkManager.swift in Sources */,
+				B667814021A1B33F003FA7DF /* LeaguesPresenter.swift in Sources */,
 				B6E29B2921A15B270004D95B /* TeamInfoViewController.swift in Sources */,
 				B6E29AFE21A157320004D95B /* LeuguesViewController.swift in Sources */,
 				B6E29AFC21A157320004D95B /* AppDelegate.swift in Sources */,

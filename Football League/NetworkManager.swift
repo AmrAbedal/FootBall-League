@@ -35,6 +35,9 @@ class NetworkManager {
                         
                     } catch {
                         DispatchQueue.main.async {
+                            
+                            
+                            print(error)
                             errorHandler()
                         }
                     }
