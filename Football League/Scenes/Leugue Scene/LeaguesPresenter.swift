@@ -17,21 +17,21 @@ protocol LeaguesPresenter: class {
     
 }
 
-class DefaultLeaguesPresenter: LeaguesPresenter {
-    func leagueNameForIndex(index: Int) -> String {
-        return leagues[index].name ?? ""
+class DefaultLeaguesPresenter {
+  private var leagues = List<League>()
+  private let networkmanager = NetworkManager.shared
+  private weak var view: LeagesView?
+    func fetchDataFromLocalStorage() {
+        
     }
+
+}
+
+extension DefaultLeaguesPresenter: LeaguesPresenter {
     
-    func numOfLeages() -> Int {
-        return leagues.count
+    func attach(view: LeagesView) {
+        self.view = view
     }
-    
-    
-    
-    
-    private var leagues = List<League>()
-    
-   private let networkmanager = NetworkManager.shared
     
     func viewDidLoad() {
         
@@ -49,25 +49,26 @@ class DefaultLeaguesPresenter: LeaguesPresenter {
             if let leages = result as? Leagues {
                 print(leages.count)
                 strongSelf.leagues = leages.competitions
-//                for league in leages.competitions {
-//                    print(league.name)
-//                }
+                //                for league in leages.competitions {
+                //                    print(league.name)
+                //                }
                 strongSelf.view?.updateData()
             }
-        }) {
-            
-            print ("error")
+        }) {[weak self] (error) in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.fetchDataFromLocalStorage()
         }
         
     }
     
-    private weak var view: LeagesView?
-    
-    func attach(view: LeagesView) {
-        self.view = view
+    func leagueNameForIndex(index: Int) -> String {
+        return leagues[index].name ?? ""
     }
     
-   
-    
+    func numOfLeages() -> Int {
+        return leagues.count
+    }
 }
 

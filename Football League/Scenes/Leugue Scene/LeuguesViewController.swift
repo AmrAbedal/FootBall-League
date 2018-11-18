@@ -16,7 +16,7 @@ class LeuguesViewController: UIViewController {
     
     @IBOutlet weak var leaguesTableView: UITableView!
     
-    private var presenter = DefaultLeaguesPresenter()
+    private var presenter: LeaguesPresenter = DefaultLeaguesPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +37,13 @@ extension LeuguesViewController: LeagesView {
     }
     
 }
+
 extension LeuguesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      return presenter.numOfLeages()
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let leagueCell = tableView.dequeueReusableCell(withIdentifier: LeagueCell.identifier) as! LeagueCell
         leagueCell.leagueNameLabel.text = presenter.leagueNameForIndex(index: indexPath.row)

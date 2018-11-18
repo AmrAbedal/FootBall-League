@@ -13,15 +13,15 @@ class NetworkManager {
    static let shared =  NetworkManager.init()
     private init() {}
     typealias completionType = ((Decodable)->())
-    typealias errorType = (()->())
+    typealias errorType = ((Error?)->())
     
     func fetchData<T>(withurlRequest urlRequest: URLRequest,  andResponceType responceType: T.Type, andCompletion completion: @escaping completionType , andErrorHandler errorHandler: @escaping errorType ) where T : Decodable {
         
       let task = URLSession.shared.dataTask(with: urlRequest) { (data, response
             , error) in
-            if error != nil  {
+            if  error != nil  {
                 DispatchQueue.main.async {
-                    errorHandler()
+                    errorHandler(error)
                 }
             }
             else {
@@ -35,16 +35,14 @@ class NetworkManager {
                         
                     } catch {
                         DispatchQueue.main.async {
-                            
-                            
                             print(error)
-                            errorHandler()
+                            errorHandler(error)
                         }
                     }
                 }
                 else {
                     DispatchQueue.main.async {
-                        errorHandler()
+                        errorHandler(error)
                     }
                 }
             }
