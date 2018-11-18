@@ -8,18 +8,24 @@
 
 import UIKit
 
+protocol LeagesView: class  {
+    func updateData()
+}
+
 class LeuguesViewController: UIViewController {
+private var presenter = DefaultLeaguesPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        presenter.attach(view: self)
+        presenter.viewDidLoad()
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension LeuguesViewController: LeagesView {
+    func updateData() {
+        print("data updated successfully")
     }
-
-
+    
 }
 
