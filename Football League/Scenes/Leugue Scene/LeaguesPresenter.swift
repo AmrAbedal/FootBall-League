@@ -18,13 +18,25 @@ protocol LeaguesPresenter: class {
 }
 
 class DefaultLeaguesPresenter {
-  private var leagues = List<League>()
+  private var leagues : [League] = []
   private let networkmanager = NetworkManager.shared
   private weak var view: LeagesView?
+  private let localStorage = DataBaseManager.shared
     func fetchDataFromLocalStorage() {
-        
+         let leagues = localStorage.getData(ofType: League.self)
+        if !leagues.isEmpty  {
+            self.leagues = leagues
+            view?.updateData()
+        }
+        else {
+            print("show error message??")
+        }
     }
-
+    private func addObjectsToRealm(objects: [Object]) {
+        for object in objects {
+            localStorage.addObject(object: object)
+        }
+    }
 }
 
 extension DefaultLeaguesPresenter: LeaguesPresenter {
@@ -48,10 +60,9 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
             }
             if let leages = result as? Leagues {
                 print(leages.count)
-                strongSelf.leagues = leages.competitions
-                //                for league in leages.competitions {
-                //                    print(league.name)
-                //                }
+                strongSelf.leagues = Array(leages.competitions)
+                strongSelf.addObjectsToRealm(objects: strongSelf.leagues)
+            
                 strongSelf.view?.updateData()
             }
         }) {[weak self] (error) in
@@ -60,7 +71,6 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
             }
             strongSelf.fetchDataFromLocalStorage()
         }
-        
     }
     
     func leagueNameForIndex(index: Int) -> String {

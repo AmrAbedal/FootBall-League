@@ -10,19 +10,11 @@ import RealmSwift
 import RealmSwift
 
 class Leagues : Object, Decodable {
-//    @objc dynamic var id : Int = 0
     @objc dynamic var count : Int = 0
-    // Create your Realm List.
     var competitions = List<League>()
-    
-//    override class func primaryKey() -> String? {
-//        return "id"
-//    }
-    
     private enum CodingKeys: String, CodingKey {
         case id
         case count
-        // Set JSON Object Key
         case competitions = "competitions"
         
     }
@@ -30,11 +22,8 @@ class Leagues : Object, Decodable {
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-//        self.id = try container.decode(Int.self, forKey: .id)
+
         self.count = try container.decode(Int.self, forKey: .count)
-        
-        // Map your JSON Array response
         let kitchens = try container.decodeIfPresent([League].self, forKey: .competitions) ?? [League()]
         competitions.append(objectsIn: kitchens)
         
