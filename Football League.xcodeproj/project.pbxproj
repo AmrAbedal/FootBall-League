@@ -17,6 +17,8 @@
 		B6E29B2121A159950004D95B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29B2021A159950004D95B /* Constants.swift */; };
 		B6E29B2621A15AD50004D95B /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29B2521A15AD50004D95B /* TeamsViewController.swift */; };
 		B6E29B2921A15B270004D95B /* TeamInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29B2821A15B270004D95B /* TeamInfoViewController.swift */; };
+		B6E29B2E21A16CC50004D95B /* Leugue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29B2D21A16CC50004D95B /* Leugue.swift */; };
+		B6E29B3021A1741B0004D95B /* AppUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29B2F21A1741B0004D95B /* AppUrls.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		B6E29B2021A159950004D95B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6E29B2521A15AD50004D95B /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		B6E29B2821A15B270004D95B /* TeamInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoViewController.swift; sourceTree = "<group>"; };
+		B6E29B2D21A16CC50004D95B /* Leugue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leugue.swift; sourceTree = "<group>"; };
+		B6E29B2F21A1741B0004D95B /* AppUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUrls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 				B6E29AFB21A157320004D95B /* AppDelegate.swift */,
 				B6E29B1E21A1596C0004D95B /* NetworkManager.swift */,
 				B6E29B2021A159950004D95B /* Constants.swift */,
+				B6E29B2F21A1741B0004D95B /* AppUrls.swift */,
 				B6E29B1D21A159270004D95B /* DataModels */,
 				B6E29B1B21A158070004D95B /* Scenes */,
 				B6E29B1C21A158BF0004D95B /* Resources */,
@@ -128,6 +133,7 @@
 		B6E29B1D21A159270004D95B /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				B6E29B2D21A16CC50004D95B /* Leugue.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -259,12 +265,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E29B2E21A16CC50004D95B /* Leugue.swift in Sources */,
 				B6E29B1F21A1596C0004D95B /* NetworkManager.swift in Sources */,
 				B6E29B2921A15B270004D95B /* TeamInfoViewController.swift in Sources */,
 				B6E29AFE21A157320004D95B /* LeuguesViewController.swift in Sources */,
 				B6E29AFC21A157320004D95B /* AppDelegate.swift in Sources */,
 				B6E29B2621A15AD50004D95B /* TeamsViewController.swift in Sources */,
 				B6E29B2121A159950004D95B /* Constants.swift in Sources */,
+				B6E29B3021A1741B0004D95B /* AppUrls.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
