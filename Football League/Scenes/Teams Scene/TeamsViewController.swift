@@ -10,26 +10,33 @@ import UIKit
 
 class TeamsViewController: UIViewController {
 
+    @IBOutlet weak var teamsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         setupTeamTable()
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func setupTeamTable() {
+        teamsTableView.rowHeight = UITableViewAutomaticDimension
+        teamsTableView.estimatedRowHeight = 150
+    }
+}
+extension TeamsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let teamCell = tableView.dequeueReusableCell(withIdentifier: TeamCell.identifier) as! TeamCell
+        teamCell.teamImageView.image = UIImage.init()
+        teamCell.teamNameLabel.text = "Liverpool"
+        teamCell.teamShotNameLabel.text = "LPC"
+        return teamCell
     }
-    */
+}
 
+extension TeamsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
