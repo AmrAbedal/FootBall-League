@@ -33,6 +33,7 @@ class Teams : Object, Decodable {
 
 
 class Team : Object, Decodable {
+    @objc dynamic var leagueId : Int = 0
     @objc dynamic var id : Int = 0
     @objc dynamic var name : String?
     @objc dynamic var shortName : String?

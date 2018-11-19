@@ -34,7 +34,7 @@ class Leagues : Object, Decodable {
 class League : Object, Decodable {
     @objc dynamic var id : Int = 0
     @objc dynamic var name : String?
-    
+    var teams = List<Team>()
     override class func primaryKey() -> String? {
         return "id"
     }
@@ -44,6 +44,15 @@ class League : Object, Decodable {
         case name
     }
 }
+
+//extension League {
+//    func updateTeams(teams: [Team]) {
+//        safeWrite {
+//            teams.removeAll()
+//            teams.append(objectsIn:)
+//        }
+//    }
+//}
 
 
 

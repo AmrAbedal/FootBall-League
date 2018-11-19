@@ -24,8 +24,9 @@ class DefaultTeamInfoPresenter {
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamInfoView?
     private let localStorage = DataBaseManager.shared
+    
     func fetchDataFromLocalStorage() {
-        let players = localStorage.getData(ofType: Player.self)
+        let players = localStorage.getData(ofType: Player.self).filter({$0.teamID == self.teamID})
         if !players.isEmpty  {
             self.players = players
             view?.updateData()
@@ -34,9 +35,10 @@ class DefaultTeamInfoPresenter {
             print("show error message??")
         }
     }
-    private func addObjectsToRealm(objects: [Object]) {
-        for object in objects {
-            localStorage.addObject(object: object)
+    private func addPlayrsToRealm(players: [Player]) {
+        for player in players {
+            player.teamID = self.teamID
+            localStorage.addObject(object: player)
         }
     }
 }
@@ -73,7 +75,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
             if let teamInfo = result as? TeamInfo {
                 print(teamInfo.id)
                 strongSelf.players = Array(teamInfo.squad)
-                strongSelf.addObjectsToRealm(objects: strongSelf.players)
+                strongSelf.addPlayrsToRealm(players: strongSelf.players)
                 
                 strongSelf.view?.updateData()
             }

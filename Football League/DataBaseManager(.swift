@@ -15,7 +15,7 @@ struct DataBaseManager {
     func getData<T> (ofType type: T.Type) -> [T] where T: Object {
         do {
             let realm = try Realm()
-       return Array(realm.objects(type))
+            return Array(realm.objects(type))
         }
         catch {
             return []
@@ -46,6 +46,19 @@ extension Realm {
         }
         else {
             code()
+        }
+    }
+}
+
+
+extension Object {
+    func safeWrite(_ writeAction: () -> ()) {
+        if let realm = realm, !realm.isInWriteTransaction {
+            try? realm.write {
+                writeAction()
+            }
+        } else {
+            writeAction()
         }
     }
 }
