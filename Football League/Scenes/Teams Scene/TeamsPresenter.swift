@@ -13,7 +13,9 @@ protocol TeamsPresenter: class {
     func attach(view: TeamsView , andLeagueId leagueId: Int)
     func viewDidLoad()
     func numOfTeams() -> Int
-    func leagueNameForIndex(index: Int) -> String
+    func teamNameForIndex(index: Int) -> String
+    func teamShortNameForIndex(index: Int) -> String
+    func teamLogoUrlForIndex(index: Int) -> String
 }
 
 class DefaultTeamsPresenter {
@@ -40,6 +42,14 @@ class DefaultTeamsPresenter {
 }
 
 extension DefaultTeamsPresenter: TeamsPresenter {
+    func teamShortNameForIndex(index: Int) -> String {
+        return teams[index].shortName ?? ""
+    }
+    
+    func teamLogoUrlForIndex(index: Int) -> String {
+        return teams[index].crestUrl ?? ""
+    }
+    
     func attach(view: TeamsView, andLeagueId leagueId: Int) {
         self.view = view
         self.leagueId = leagueId
@@ -73,7 +83,7 @@ extension DefaultTeamsPresenter: TeamsPresenter {
         }
     }
     
-    func leagueNameForIndex(index: Int) -> String {
+    func teamNameForIndex(index: Int) -> String {
         return teams[index].name ?? ""
     }
     

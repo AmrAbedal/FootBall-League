@@ -7,6 +7,8 @@ target 'Football League' do
 
   # Pods for Football League
   pod 'RealmSwift'
+  pod 'SDWebImage', '~> 4.0'
+
 
   target 'Football LeagueTests' do
     inherit! :search_paths

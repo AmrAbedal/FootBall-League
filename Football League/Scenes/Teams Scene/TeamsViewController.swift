@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol TeamsView: class {
     func updateData()
@@ -36,19 +37,19 @@ extension TeamsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let teamCell = tableView.dequeueReusableCell(withIdentifier: TeamCell.identifier) as! TeamCell
-        teamCell.teamImageView.image = UIImage.init()
-        teamCell.teamNameLabel.text = presenter.leagueNameForIndex(index: indexPath.row)
-        teamCell.teamShotNameLabel.text = "LPC"
+        teamCell.teamImageView.sd_setImage(with: URL(string: presenter.teamLogoUrlForIndex(index: indexPath.row)), placeholderImage: nil)
+       
+        teamCell.teamNameLabel.text = presenter.teamNameForIndex(index: indexPath.row)
+        teamCell.teamShotNameLabel.text = presenter.teamShortNameForIndex(index: indexPath.row)
         return teamCell
     }
 }
 
 extension TeamsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-        
     }
 }
+
 extension TeamsViewController: TeamsView {
     func updateData() {
         teamsTableView.reloadData()
