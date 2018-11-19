@@ -14,19 +14,20 @@ protocol TeamInfoView: class {
 
 class TeamInfoViewController: UIViewController {
 
-    var leagueId: Int!
+    var teamId: Int!
     let presenter: TeamInfoPresenter = DefaultTeamInfoPresenter()
-    @IBOutlet weak var teamsTableView: UITableView!
+    
+    @IBOutlet weak var playerTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTeamTable()
-        presenter.attach(view: self, andLeagueId: leagueId)
+        presenter.attach(view: self, andTeamId: teamId)
         presenter.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     private func setupTeamTable() {
-        teamsTableView.rowHeight = UITableViewAutomaticDimension
-        teamsTableView.estimatedRowHeight = 150
+        playerTable.rowHeight = UITableViewAutomaticDimension
+        playerTable.estimatedRowHeight = 150
     }
 }
 
@@ -36,12 +37,13 @@ extension TeamInfoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let teamCell = tableView.dequeueReusableCell(withIdentifier: TeamCell.identifier) as! TeamCell
-        teamCell.teamImageView.sd_setImage(with: URL(string: presenter.teamLogoUrlForIndex(index: indexPath.row)), placeholderImage: nil)
+        let playerCell = tableView.dequeueReusableCell(withIdentifier: PlayerCell.identifier) as! PlayerCell
+        playerCell.playerNameLabel.text = presenter.playerNameForIndex(index: indexPath.row)
         
-        teamCell.teamNameLabel.text = presenter.teamNameForIndex(index: indexPath.row)
-        teamCell.teamShotNameLabel.text = presenter.teamShortNameForIndex(index: indexPath.row)
-        return teamCell
+        playerCell.playerPositionLabel.text = presenter.playerPositionForIndex(index: indexPath.row)
+        
+        playerCell.playerNationalityLabel.text =  presenter.playerNationalityForIndex(index: indexPath.row)
+        return playerCell
     }
 }
 
@@ -52,7 +54,7 @@ extension TeamInfoViewController: UITableViewDelegate {
 
 extension TeamInfoViewController: TeamInfoView {
     func updateData() {
-        teamsTableView.reloadData()
+        playerTable.reloadData()
     }
 }
 

@@ -11,6 +11,7 @@ import SDWebImage
 
 protocol TeamsView: class {
     func updateData()
+     func presentTeamInfoViewController(withLeagueId leagueId: Int)
 }
 
 class TeamsViewController: UIViewController {
@@ -25,6 +26,7 @@ class TeamsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     private func setupTeamTable() {
+        title = "Teams"
         teamsTableView.rowHeight = UITableViewAutomaticDimension
         teamsTableView.estimatedRowHeight = 150
     }
@@ -47,10 +49,16 @@ extension TeamsViewController: UITableViewDataSource {
 
 extension TeamsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectItemAtIndex(index: indexPath.row)
     }
 }
 
 extension TeamsViewController: TeamsView {
+    func presentTeamInfoViewController(withLeagueId leagueId: Int) {
+        perform(segue: "TeamInfoViewController") { (teamsViewController: TeamInfoViewController) in
+            teamsViewController.teamId = leagueId
+    }
+    }
     func updateData() {
         teamsTableView.reloadData()
     }

@@ -16,6 +16,7 @@ protocol TeamsPresenter: class {
     func teamNameForIndex(index: Int) -> String
     func teamShortNameForIndex(index: Int) -> String
     func teamLogoUrlForIndex(index: Int) -> String
+    func didSelectItemAtIndex(index: Int)
 }
 
 class DefaultTeamsPresenter {
@@ -42,6 +43,10 @@ class DefaultTeamsPresenter {
 }
 
 extension DefaultTeamsPresenter: TeamsPresenter {
+    func didSelectItemAtIndex(index: Int) {
+        view?.presentTeamInfoViewController(withLeagueId: teams[index].id)
+    }
+    
     func teamShortNameForIndex(index: Int) -> String {
         return teams[index].shortName ?? ""
     }

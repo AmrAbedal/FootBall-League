@@ -10,24 +10,24 @@ import Foundation
 import RealmSwift
 
 protocol TeamInfoPresenter: class {
-    func attach(view: TeamInfoView , andLeagueId leagueId: Int)
+    func attach(view: TeamInfoView , andTeamId leagueId: Int)
     func viewDidLoad()
     func numOfTeams() -> Int
-    func teamNameForIndex(index: Int) -> String
-    func teamShortNameForIndex(index: Int) -> String
-    func teamLogoUrlForIndex(index: Int) -> String
+    func playerNameForIndex(index: Int) -> String
+    func playerPositionForIndex(index: Int) -> String
+    func playerNationalityForIndex(index: Int) -> String
 }
 
 class DefaultTeamInfoPresenter {
-    private var leagueId: Int!
-    private var teams : [Team] = []
+    private var teamID: Int!
+    private var players : [Player] = []
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamInfoView?
     private let localStorage = DataBaseManager.shared
     func fetchDataFromLocalStorage() {
-        let leagues = localStorage.getData(ofType: Team.self)
-        if !leagues.isEmpty  {
-            self.teams = leagues
+        let players = localStorage.getData(ofType: Player.self)
+        if !players.isEmpty  {
+            self.players = players
             view?.updateData()
         }
         else {
@@ -43,37 +43,37 @@ class DefaultTeamInfoPresenter {
 
 extension DefaultTeamInfoPresenter: TeamInfoPresenter {
     
-    func teamShortNameForIndex(index: Int) -> String {
-        return teams[index].shortName ?? ""
+    func playerPositionForIndex(index: Int) -> String {
+        return players[index].position ?? ""
     }
     
-    func teamLogoUrlForIndex(index: Int) -> String {
-        return teams[index].crestUrl ?? ""
+    func playerNationalityForIndex(index: Int) -> String {
+        return players[index].nationality ?? ""
     }
     
-    func attach(view: TeamInfoView, andLeagueId leagueId: Int) {
+    func attach(view: TeamInfoView, andTeamId teamId: Int) {
         self.view = view
-        self.leagueId = leagueId
+        self.teamID = teamId
     }
     
     func viewDidLoad() {
         
-        guard let url = URL.init(string: AppUrls.teamUrlOfLeageId(leagueid: leagueId)) else {
+        guard let url = URL.init(string: AppUrls.teamInfoUrl(ofTeamId: teamID)) else {
             return
         }
         
         var reguest = URLRequest.init(url: url )
         reguest.addValue(Constants.token, forHTTPHeaderField: Constants.tokenName)
         
-        networkmanager.fetchData( withurlRequest: reguest, andResponceType: Teams.self, andCompletion: { [weak self] (result) in
+        networkmanager.fetchData( withurlRequest: reguest, andResponceType: TeamInfo.self, andCompletion: { [weak self] (result) in
             guard let strongSelf = self else {
                 return
             }
             
-            if let teams = result as? Teams {
-                print(teams.count)
-                strongSelf.teams = Array(teams.teams)
-                strongSelf.addObjectsToRealm(objects: strongSelf.teams)
+            if let teamInfo = result as? TeamInfo {
+                print(teamInfo.id)
+                strongSelf.players = Array(teamInfo.squad)
+                strongSelf.addObjectsToRealm(objects: strongSelf.players)
                 
                 strongSelf.view?.updateData()
             }
@@ -85,11 +85,11 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
         }
     }
     
-    func teamNameForIndex(index: Int) -> String {
-        return teams[index].name ?? ""
+    func playerNameForIndex(index: Int) -> String {
+        return players[index].name ?? ""
     }
     
     func numOfTeams() -> Int {
-        return teams.count
+        return players.count
     }
 }

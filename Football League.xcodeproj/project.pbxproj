@@ -19,6 +19,7 @@
 		B69E6E7221A2EA66002E9A37 /* UIViewControllerSegueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E7121A2EA66002E9A37 /* UIViewControllerSegueExtension.swift */; };
 		B69E6E7521A306A4002E9A37 /* TeamInfoPresnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E7421A306A4002E9A37 /* TeamInfoPresnter.swift */; };
 		B69E6E7721A30B3C002E9A37 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E7621A30B3C002E9A37 /* Players.swift */; };
+		B69E6E7921A30E7A002E9A37 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E7821A30E7A002E9A37 /* PlayerCell.swift */; };
 		B6E29AFC21A157320004D95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFB21A157320004D95B /* AppDelegate.swift */; };
 		B6E29AFE21A157320004D95B /* LeuguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFD21A157320004D95B /* LeuguesViewController.swift */; };
 		B6E29B0121A157320004D95B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29AFF21A157320004D95B /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		B69E6E7121A2EA66002E9A37 /* UIViewControllerSegueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerSegueExtension.swift; sourceTree = "<group>"; };
 		B69E6E7421A306A4002E9A37 /* TeamInfoPresnter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoPresnter.swift; sourceTree = "<group>"; };
 		B69E6E7621A30B3C002E9A37 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
+		B69E6E7821A30E7A002E9A37 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		B6E29AF821A157320004D95B /* Football League.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Football League.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29AFB21A157320004D95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E29AFD21A157320004D95B /* LeuguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeuguesViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			children = (
 				B6E29B2821A15B270004D95B /* TeamInfoViewController.swift */,
 				B69E6E7421A306A4002E9A37 /* TeamInfoPresnter.swift */,
+				B69E6E7821A30E7A002E9A37 /* PlayerCell.swift */,
 			);
 			path = "TeamInfo Scene";
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B69E6E7721A30B3C002E9A37 /* Players.swift in Sources */,
+				B69E6E7921A30E7A002E9A37 /* PlayerCell.swift in Sources */,
 				B6E29B2E21A16CC50004D95B /* Leugue.swift in Sources */,
 				B69E6E7021A2E5CC002E9A37 /* TeamsPresenter.swift in Sources */,
 				B69E6E7221A2EA66002E9A37 /* UIViewControllerSegueExtension.swift in Sources */,

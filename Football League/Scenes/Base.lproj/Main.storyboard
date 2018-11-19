@@ -207,11 +207,102 @@
                     </view>
                     <connections>
                         <outlet property="teamsTableView" destination="QQa-wb-87x" id="vRY-fc-Qx8"/>
+                        <segue destination="val-3O-CE0" kind="show" identifier="TeamInfoViewController" id="sMv-fc-17t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeR-Lh-Aaw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1453.5999999999999" y="113.79310344827587"/>
+        </scene>
+        <!--Team Info View Controller-->
+        <scene sceneID="dRw-3H-Ld1">
+            <objects>
+                <viewController id="val-3O-CE0" customClass="TeamInfoViewController" customModule="Football_League" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UZ2-hX-Qp9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="00o-AY-1Ss">
+                                <rect key="frame" x="-0.5" y="32" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerCell" rowHeight="161" id="sNW-ap-cTK" customClass="PlayerCell" customModule="Football_League" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="161"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sNW-ap-cTK" id="sih-O4-Xew">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JjI-jb-mtw">
+                                                    <rect key="frame" x="10" y="5" width="355" height="150.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g39-Pg-xn6">
+                                                            <rect key="frame" x="10" y="10" width="48" height="69"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8c3-bl-dVl">
+                                                            <rect key="frame" x="10" y="89" width="42" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hb-RH-hGi">
+                                                            <rect key="frame" x="10" y="119.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="4hb-RH-hGi" firstAttribute="leading" secondItem="JjI-jb-mtw" secondAttribute="leading" constant="10" id="Na5-dH-hfP"/>
+                                                        <constraint firstItem="g39-Pg-xn6" firstAttribute="leading" secondItem="JjI-jb-mtw" secondAttribute="leading" constant="10" id="RJ0-OM-toi"/>
+                                                        <constraint firstItem="g39-Pg-xn6" firstAttribute="top" secondItem="JjI-jb-mtw" secondAttribute="top" constant="10" id="VvP-oR-hKx"/>
+                                                        <constraint firstItem="8c3-bl-dVl" firstAttribute="leading" secondItem="JjI-jb-mtw" secondAttribute="leading" constant="10" id="YOT-lM-m8V"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4hb-RH-hGi" secondAttribute="bottom" constant="10" id="hEV-PA-G6N"/>
+                                                        <constraint firstItem="8c3-bl-dVl" firstAttribute="top" secondItem="g39-Pg-xn6" secondAttribute="bottom" constant="10" id="oEJ-HH-SnR"/>
+                                                        <constraint firstItem="4hb-RH-hGi" firstAttribute="top" secondItem="8c3-bl-dVl" secondAttribute="bottom" constant="10" id="yfE-J8-rWW"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="JjI-jb-mtw" secondAttribute="bottom" constant="5" id="CPO-4G-YpK"/>
+                                                <constraint firstItem="JjI-jb-mtw" firstAttribute="leading" secondItem="sih-O4-Xew" secondAttribute="leading" constant="10" id="N4J-qo-rNy"/>
+                                                <constraint firstItem="JjI-jb-mtw" firstAttribute="top" secondItem="sih-O4-Xew" secondAttribute="top" constant="5" id="g83-Yo-EC2"/>
+                                                <constraint firstAttribute="trailing" secondItem="JjI-jb-mtw" secondAttribute="trailing" constant="10" id="rPD-VX-5GL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playerNameLabel" destination="g39-Pg-xn6" id="Kid-ln-cGX"/>
+                                            <outlet property="playerNationalityLabel" destination="4hb-RH-hGi" id="KiJ-xV-0mc"/>
+                                            <outlet property="playerPositionLabel" destination="8c3-bl-dVl" id="fAI-Bt-sEG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="val-3O-CE0" id="pTk-Gq-is8"/>
+                                    <outlet property="delegate" destination="val-3O-CE0" id="Uo1-31-NzE"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="00o-AY-1Ss" firstAttribute="height" secondItem="UZ2-hX-Qp9" secondAttribute="height" id="3bn-2V-uYK"/>
+                            <constraint firstItem="00o-AY-1Ss" firstAttribute="centerX" secondItem="7MW-vk-M7M" secondAttribute="centerX" id="JGT-eZ-TJa"/>
+                            <constraint firstItem="00o-AY-1Ss" firstAttribute="width" secondItem="UZ2-hX-Qp9" secondAttribute="width" id="YK7-PM-901"/>
+                            <constraint firstItem="00o-AY-1Ss" firstAttribute="centerY" secondItem="7MW-vk-M7M" secondAttribute="centerY" id="dls-94-hYB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7MW-vk-M7M"/>
+                    </view>
+                    <connections>
+                        <outlet property="playerTable" destination="00o-AY-1Ss" id="cvP-95-gWf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FfG-fD-n4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2181.5999999999999" y="100.29985007496252"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Sb-A3-VS4">
