@@ -17,6 +17,8 @@
 		B69E6E6C21A2E134002E9A37 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E6B21A2E134002E9A37 /* Team.swift */; };
 		B69E6E7021A2E5CC002E9A37 /* TeamsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E6F21A2E5CC002E9A37 /* TeamsPresenter.swift */; };
 		B69E6E7221A2EA66002E9A37 /* UIViewControllerSegueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E7121A2EA66002E9A37 /* UIViewControllerSegueExtension.swift */; };
+		B69E6E7521A306A4002E9A37 /* TeamInfoPresnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E7421A306A4002E9A37 /* TeamInfoPresnter.swift */; };
+		B69E6E7721A30B3C002E9A37 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E7621A30B3C002E9A37 /* Players.swift */; };
 		B6E29AFC21A157320004D95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFB21A157320004D95B /* AppDelegate.swift */; };
 		B6E29AFE21A157320004D95B /* LeuguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFD21A157320004D95B /* LeuguesViewController.swift */; };
 		B6E29B0121A157320004D95B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29AFF21A157320004D95B /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 		B69E6E6B21A2E134002E9A37 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		B69E6E6F21A2E5CC002E9A37 /* TeamsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsPresenter.swift; sourceTree = "<group>"; };
 		B69E6E7121A2EA66002E9A37 /* UIViewControllerSegueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerSegueExtension.swift; sourceTree = "<group>"; };
+		B69E6E7421A306A4002E9A37 /* TeamInfoPresnter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoPresnter.swift; sourceTree = "<group>"; };
+		B69E6E7621A30B3C002E9A37 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		B6E29AF821A157320004D95B /* Football League.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Football League.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29AFB21A157320004D95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E29AFD21A157320004D95B /* LeuguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeuguesViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			children = (
 				B6E29B2D21A16CC50004D95B /* Leugue.swift */,
 				B69E6E6B21A2E134002E9A37 /* Team.swift */,
+				B69E6E7621A30B3C002E9A37 /* Players.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				B6E29B2821A15B270004D95B /* TeamInfoViewController.swift */,
+				B69E6E7421A306A4002E9A37 /* TeamInfoPresnter.swift */,
 			);
 			path = "TeamInfo Scene";
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B69E6E7721A30B3C002E9A37 /* Players.swift in Sources */,
 				B6E29B2E21A16CC50004D95B /* Leugue.swift in Sources */,
 				B69E6E7021A2E5CC002E9A37 /* TeamsPresenter.swift in Sources */,
 				B69E6E7221A2EA66002E9A37 /* UIViewControllerSegueExtension.swift in Sources */,
@@ -448,6 +455,7 @@
 				B69E6E6C21A2E134002E9A37 /* Team.swift in Sources */,
 				B6E29B1F21A1596C0004D95B /* NetworkManager.swift in Sources */,
 				B667814021A1B33F003FA7DF /* LeaguesPresenter.swift in Sources */,
+				B69E6E7521A306A4002E9A37 /* TeamInfoPresnter.swift in Sources */,
 				B6E29B2921A15B270004D95B /* TeamInfoViewController.swift in Sources */,
 				B667814221A1B8BD003FA7DF /* LeagueCell.swift in Sources */,
 				B69E6E6621A2C144002E9A37 /* TeamCell.swift in Sources */,
