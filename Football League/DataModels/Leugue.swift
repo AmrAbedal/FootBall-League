@@ -7,7 +7,6 @@
 //
 import Foundation
 import RealmSwift
-import RealmSwift
 
 class Leagues : Object, Decodable {
     @objc dynamic var count : Int = 0
@@ -24,8 +23,8 @@ class Leagues : Object, Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.count = try container.decode(Int.self, forKey: .count)
-        let kitchens = try container.decodeIfPresent([League].self, forKey: .competitions) ?? [League()]
-        competitions.append(objectsIn: kitchens)
+        let competitions = try container.decodeIfPresent([League].self, forKey: .competitions) ?? [League()]
+        self.competitions.append(objectsIn: competitions)
         
     }
     

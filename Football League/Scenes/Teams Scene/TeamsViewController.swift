@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TeamsView: class {
+    func updateData()
+}
+
 class TeamsViewController: UIViewController {
 
     @IBOutlet weak var teamsTableView: UITableView!

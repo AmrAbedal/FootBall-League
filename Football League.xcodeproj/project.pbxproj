@@ -14,6 +14,8 @@
 		B667814421A1C169003FA7DF /* UIKItExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667814321A1C169003FA7DF /* UIKItExtension.swift */; };
 		B667814621A1C92C003FA7DF /* DataBaseManager(.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667814521A1C92C003FA7DF /* DataBaseManager(.swift */; };
 		B69E6E6621A2C144002E9A37 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E6521A2C144002E9A37 /* TeamCell.swift */; };
+		B69E6E6C21A2E134002E9A37 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E6B21A2E134002E9A37 /* Team.swift */; };
+		B69E6E7021A2E5CC002E9A37 /* TeamsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E6F21A2E5CC002E9A37 /* TeamsPresenter.swift */; };
 		B6E29AFC21A157320004D95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFB21A157320004D95B /* AppDelegate.swift */; };
 		B6E29AFE21A157320004D95B /* LeuguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFD21A157320004D95B /* LeuguesViewController.swift */; };
 		B6E29B0121A157320004D95B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29AFF21A157320004D95B /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		B667814321A1C169003FA7DF /* UIKItExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKItExtension.swift; sourceTree = "<group>"; };
 		B667814521A1C92C003FA7DF /* DataBaseManager(.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataBaseManager(.swift"; sourceTree = "<group>"; };
 		B69E6E6521A2C144002E9A37 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		B69E6E6B21A2E134002E9A37 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		B69E6E6F21A2E5CC002E9A37 /* TeamsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsPresenter.swift; sourceTree = "<group>"; };
 		B6E29AF821A157320004D95B /* Football League.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Football League.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29AFB21A157320004D95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E29AFD21A157320004D95B /* LeuguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeuguesViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				B6E29B2D21A16CC50004D95B /* Leugue.swift */,
+				B69E6E6B21A2E134002E9A37 /* Team.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 			children = (
 				B6E29B2521A15AD50004D95B /* TeamsViewController.swift */,
 				B69E6E6521A2C144002E9A37 /* TeamCell.swift */,
+				B69E6E6F21A2E5CC002E9A37 /* TeamsPresenter.swift */,
 			);
 			path = "Teams Scene";
 			sourceTree = "<group>";
@@ -423,7 +429,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E29B2E21A16CC50004D95B /* Leugue.swift in Sources */,
+				B69E6E7021A2E5CC002E9A37 /* TeamsPresenter.swift in Sources */,
 				B667814621A1C92C003FA7DF /* DataBaseManager(.swift in Sources */,
+				B69E6E6C21A2E134002E9A37 /* Team.swift in Sources */,
 				B6E29B1F21A1596C0004D95B /* NetworkManager.swift in Sources */,
 				B667814021A1B33F003FA7DF /* LeaguesPresenter.swift in Sources */,
 				B6E29B2921A15B270004D95B /* TeamInfoViewController.swift in Sources */,
