@@ -14,7 +14,7 @@ protocol LeaguesPresenter: class {
     func viewDidLoad()
     func numOfLeages() -> Int
     func leagueNameForIndex(index: Int) -> String
-    
+    func didSelectItemAtIndex(index: Int)
 }
 
 class DefaultLeaguesPresenter {
@@ -40,6 +40,15 @@ class DefaultLeaguesPresenter {
 }
 
 extension DefaultLeaguesPresenter: LeaguesPresenter {
+    func didSelectItemAtIndex(index: Int) {
+        guard Constants.avaliableLeageIds.contains(leagues[index].id) else {
+            return
+        }
+view?.presentTeamsViewController(withLeagueId:leagues[index].id )
+    }
+    
+    
+    
     
     func attach(view: LeagesView) {
         self.view = view

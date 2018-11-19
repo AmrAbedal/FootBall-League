@@ -10,13 +10,14 @@ import Foundation
 import RealmSwift
 
 protocol TeamsPresenter: class {
-    func attach(view: TeamsView)
+    func attach(view: TeamsView , andLeagueId leagueId: Int)
     func viewDidLoad()
-    func numOfLeages() -> Int
+    func numOfTeams() -> Int
     func leagueNameForIndex(index: Int) -> String
 }
 
 class DefaultTeamsPresenter {
+    private var leagueId: Int!
     private var teams : [Team] = []
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamsView?
@@ -39,14 +40,13 @@ class DefaultTeamsPresenter {
 }
 
 extension DefaultTeamsPresenter: TeamsPresenter {
-    
-    func attach(view: TeamsView) {
+    func attach(view: TeamsView, andLeagueId leagueId: Int) {
         self.view = view
+        self.leagueId = leagueId
     }
-    
     func viewDidLoad() {
         
-        guard let url = URL.init(string: AppUrls.leagues) else {
+        guard let url = URL.init(string: AppUrls.teamUrlOfLeageId(leagueid: leagueId)) else {
             return
         }
         
@@ -57,6 +57,7 @@ extension DefaultTeamsPresenter: TeamsPresenter {
             guard let strongSelf = self else {
                 return
             }
+            
             if let teams = result as? Teams {
                 print(teams.count)
                 strongSelf.teams = Array(teams.teams)
@@ -76,7 +77,7 @@ extension DefaultTeamsPresenter: TeamsPresenter {
         return teams[index].name ?? ""
     }
     
-    func numOfLeages() -> Int {
+    func numOfTeams() -> Int {
         return teams.count
     }
 }

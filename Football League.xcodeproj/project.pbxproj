@@ -16,6 +16,7 @@
 		B69E6E6621A2C144002E9A37 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E6521A2C144002E9A37 /* TeamCell.swift */; };
 		B69E6E6C21A2E134002E9A37 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E6B21A2E134002E9A37 /* Team.swift */; };
 		B69E6E7021A2E5CC002E9A37 /* TeamsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E6F21A2E5CC002E9A37 /* TeamsPresenter.swift */; };
+		B69E6E7221A2EA66002E9A37 /* UIViewControllerSegueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E6E7121A2EA66002E9A37 /* UIViewControllerSegueExtension.swift */; };
 		B6E29AFC21A157320004D95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFB21A157320004D95B /* AppDelegate.swift */; };
 		B6E29AFE21A157320004D95B /* LeuguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E29AFD21A157320004D95B /* LeuguesViewController.swift */; };
 		B6E29B0121A157320004D95B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E29AFF21A157320004D95B /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		B69E6E6521A2C144002E9A37 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		B69E6E6B21A2E134002E9A37 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		B69E6E6F21A2E5CC002E9A37 /* TeamsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsPresenter.swift; sourceTree = "<group>"; };
+		B69E6E7121A2EA66002E9A37 /* UIViewControllerSegueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerSegueExtension.swift; sourceTree = "<group>"; };
 		B6E29AF821A157320004D95B /* Football League.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Football League.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E29AFB21A157320004D95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E29AFD21A157320004D95B /* LeuguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeuguesViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B69E6E7321A2EBA1002E9A37 /* External Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				B69E6E7121A2EA66002E9A37 /* UIViewControllerSegueExtension.swift */,
+			);
+			path = "External Dependency";
+			sourceTree = "<group>";
+		};
 		B6A78534FCF3CCB500C0AB7D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 			children = (
 				B6E29AFB21A157320004D95B /* AppDelegate.swift */,
 				B6E29B1E21A1596C0004D95B /* NetworkManager.swift */,
+				B69E6E7321A2EBA1002E9A37 /* External Dependency */,
 				B6E29B2021A159950004D95B /* Constants.swift */,
 				B667814321A1C169003FA7DF /* UIKItExtension.swift */,
 				B6E29B2F21A1741B0004D95B /* AppUrls.swift */,
@@ -430,6 +441,7 @@
 			files = (
 				B6E29B2E21A16CC50004D95B /* Leugue.swift in Sources */,
 				B69E6E7021A2E5CC002E9A37 /* TeamsPresenter.swift in Sources */,
+				B69E6E7221A2EA66002E9A37 /* UIViewControllerSegueExtension.swift in Sources */,
 				B667814621A1C92C003FA7DF /* DataBaseManager(.swift in Sources */,
 				B69E6E6C21A2E134002E9A37 /* Team.swift in Sources */,
 				B6E29B1F21A1596C0004D95B /* NetworkManager.swift in Sources */,

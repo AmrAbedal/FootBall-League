@@ -13,11 +13,14 @@ protocol TeamsView: class {
 }
 
 class TeamsViewController: UIViewController {
-
+    var leagueId: Int!
+    let presenter: TeamsPresenter = DefaultTeamsPresenter()
     @IBOutlet weak var teamsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
          setupTeamTable()
+        presenter.attach(view: self, andLeagueId: leagueId)
+        presenter.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     private func setupTeamTable() {
@@ -25,15 +28,16 @@ class TeamsViewController: UIViewController {
         teamsTableView.estimatedRowHeight = 150
     }
 }
+
 extension TeamsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return presenter.numOfTeams()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let teamCell = tableView.dequeueReusableCell(withIdentifier: TeamCell.identifier) as! TeamCell
         teamCell.teamImageView.image = UIImage.init()
-        teamCell.teamNameLabel.text = "Liverpool"
+        teamCell.teamNameLabel.text = presenter.leagueNameForIndex(index: indexPath.row)
         teamCell.teamShotNameLabel.text = "LPC"
         return teamCell
     }
@@ -41,6 +45,12 @@ extension TeamsViewController: UITableViewDataSource {
 
 extension TeamsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
         
+    }
+}
+extension TeamsViewController: TeamsView {
+    func updateData() {
+        teamsTableView.reloadData()
     }
 }

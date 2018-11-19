@@ -110,7 +110,7 @@
                     <navigationItem key="navigationItem" title="Football League" id="qoL-gY-e5T"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="9bo-ef-loK" id="ZoJ-mb-vQZ"/>
-                        <segue destination="Lo3-dv-L2s" kind="show" identifier="teamsViewController" id="EM6-zn-ETc"/>
+                        <segue destination="Lo3-dv-L2s" kind="show" identifier="TeamsViewController" id="EM6-zn-ETc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

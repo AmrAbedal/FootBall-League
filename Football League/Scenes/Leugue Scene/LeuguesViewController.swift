@@ -10,6 +10,7 @@ import UIKit
 
 protocol LeagesView: class  {
     func updateData()
+    func presentTeamsViewController(withLeagueId leagueId: Int)
 }
 
 class LeuguesViewController: UIViewController {
@@ -28,14 +29,27 @@ class LeuguesViewController: UIViewController {
         leaguesTableView.estimatedRowHeight = 100
         leaguesTableView.rowHeight = UITableViewAutomaticDimension
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let identifier = segue.identifier else { return }
+//        switch identifier {
+//        case "TeamsViewController": let teamsViewController  = segue.destination as! TeamsViewController
+//        teamsViewController.leagueId = presenter.
+//        default:
+//            break
+//        }
+//    }
 }
 
 extension LeuguesViewController: LeagesView {
+    func presentTeamsViewController(withLeagueId leagueId: Int) {
+        perform(segue: "TeamsViewController") { (teamsViewController: TeamsViewController) in
+            teamsViewController.leagueId = leagueId
+        }
+    }
     func updateData() {
         print("data updated successfully")
         leaguesTableView.reloadData()
     }
-    
 }
 
 extension LeuguesViewController: UITableViewDataSource {
@@ -48,6 +62,12 @@ extension LeuguesViewController: UITableViewDataSource {
         let leagueCell = tableView.dequeueReusableCell(withIdentifier: LeagueCell.identifier) as! LeagueCell
         leagueCell.leagueNameLabel.text = presenter.leagueNameForIndex(index: indexPath.row)
         return leagueCell
+    }
+}
+
+extension LeuguesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectItemAtIndex(index: indexPath.row)
     }
 }
 
