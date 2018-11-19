@@ -61,6 +61,7 @@ extension LeuguesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let leagueCell = tableView.dequeueReusableCell(withIdentifier: LeagueCell.identifier) as! LeagueCell
         leagueCell.leagueNameLabel.text = presenter.leagueNameForIndex(index: indexPath.row)
+        leagueCell.containerView.backgroundColor = presenter.backGroundColorForIndex(index: indexPath.row)
         return leagueCell
     }
 }

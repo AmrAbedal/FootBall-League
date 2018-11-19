@@ -15,15 +15,16 @@ protocol LeaguesPresenter: class {
     func numOfLeages() -> Int
     func leagueNameForIndex(index: Int) -> String
     func didSelectItemAtIndex(index: Int)
+    func backGroundColorForIndex(index: Int) -> UIColor
 }
 
 class DefaultLeaguesPresenter {
-  private var leagues : [League] = []
-  private let networkmanager = NetworkManager.shared
-  private weak var view: LeagesView?
-  private let localStorage = DataBaseManager.shared
+    private var leagues : [League] = []
+    private let networkmanager = NetworkManager.shared
+    private weak var view: LeagesView?
+    private let localStorage = DataBaseManager.shared
     func fetchDataFromLocalStorage() {
-         let leagues = localStorage.getData(ofType: League.self)
+        let leagues = localStorage.getData(ofType: League.self)
         if !leagues.isEmpty  {
             self.leagues = leagues
             view?.updateData()
@@ -40,11 +41,20 @@ class DefaultLeaguesPresenter {
 }
 
 extension DefaultLeaguesPresenter: LeaguesPresenter {
+    func backGroundColorForIndex(index: Int) -> UIColor {
+        if Constants.avaliableLeageIds.contains(leagues[index].id) {
+            return UIColor.purple
+        }
+        else {
+            return UIColor.cyan
+        }
+    }
+    
     func didSelectItemAtIndex(index: Int) {
         guard Constants.avaliableLeageIds.contains(leagues[index].id) else {
             return
         }
-view?.presentTeamsViewController(withLeagueId:leagues[index].id )
+        view?.presentTeamsViewController(withLeagueId:leagues[index].id )
     }
     
     
@@ -71,7 +81,7 @@ view?.presentTeamsViewController(withLeagueId:leagues[index].id )
                 print(leages.count)
                 strongSelf.leagues = Array(leages.competitions)
                 strongSelf.addObjectsToRealm(objects: strongSelf.leagues)
-            
+                
                 strongSelf.view?.updateData()
             }
         }) {[weak self] (error) in
