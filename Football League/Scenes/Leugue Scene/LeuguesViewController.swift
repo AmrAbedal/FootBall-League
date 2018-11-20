@@ -25,6 +25,7 @@ class LeuguesViewController: UIViewController {
         presenter.attach(view: self)
         presenter.viewDidLoad()
     }
+    
     private func setupLeaguesTableview() {
         registerLeaguesTableCells()
         leaguesTableView.estimatedRowHeight = 100
@@ -37,11 +38,13 @@ class LeuguesViewController: UIViewController {
 }
 
 extension LeuguesViewController: LeagesView {
+    
     func presentTeamsViewController(withLeagueId leagueId: Int) {
-        perform(segue: "TeamsViewController") { (teamsViewController: TeamsViewController) in
+        perform(segue: Segues.TeamsViewController.rawValue) { (teamsViewController: TeamsViewController) in
             teamsViewController.leagueId = leagueId
         }
     }
+    
     func updateData() {
         print("data updated successfully")
         leaguesTableView.reloadData()

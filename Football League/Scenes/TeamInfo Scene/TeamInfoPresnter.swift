@@ -61,6 +61,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
             print("show error message")
             return
         }
+        
         self.team = team
         view?.updateData()
         guard let url = URL.init(string: AppUrls.teamInfoUrl(ofTeamId: team.id)) else {
@@ -100,6 +101,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
             print("show error message??")
         }
     }
+    
     private func addPlayrsToRealm(players: [Player] , withTeamId teamId: Int) {
         for player in players {
             player.teamID = teamId

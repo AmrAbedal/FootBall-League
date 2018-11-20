@@ -13,7 +13,7 @@ protocol LeaguesPresenter: class {
     func attach(view: LeagesView)
     func viewDidLoad()
     func numOfLeages() -> Int
-    func leagueNameForIndex(index: Int) -> String
+    func leagueNameForIndex(index: Int) -> String?
     func didSelectItemAtIndex(index: Int)
     func backGroundColorForIndex(index: Int) -> UIColor
 }
@@ -57,9 +57,6 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
         view?.presentTeamsViewController(withLeagueId:leagues[index].id )
     }
     
-    
-    
-    
     func attach(view: LeagesView) {
         self.view = view
     }
@@ -67,6 +64,7 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
     func viewDidLoad() {
         
         guard let url = URL.init(string: AppUrls.leagues) else {
+            print("show Error Message")
             return
         }
         
@@ -92,8 +90,8 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
         }
     }
     
-    func leagueNameForIndex(index: Int) -> String {
-        return leagues[index].name ?? ""
+    func leagueNameForIndex(index: Int) -> String? {
+        return leagues[index].name
     }
     
     func numOfLeages() -> Int {

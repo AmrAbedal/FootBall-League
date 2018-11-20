@@ -17,8 +17,8 @@ class TeamInfoViewController: UIViewController {
     
     var team: Team?
     let presenter: TeamInfoPresenter = DefaultTeamInfoPresenter()
-    
     @IBOutlet weak var teamInfoTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTeamTable()
@@ -47,12 +47,15 @@ extension TeamInfoViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numOfPlayers()
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 300
+        return 250
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerViewCell = tableView.dequeueReusableCell(withIdentifier: TeamInfoHeaderView.identifier) as! TeamInfoHeaderView
         headerViewCell.teamNameLabel.text = presenter.teamName()
@@ -72,16 +75,8 @@ extension TeamInfoViewController: UITableViewDataSource {
     }
 }
 
-extension TeamInfoViewController: UITableViewDelegate {
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-}
-
 extension TeamInfoViewController: TeamInfoView {
     func updateData() {
         teamInfoTable.reloadData()
     }
 }
-

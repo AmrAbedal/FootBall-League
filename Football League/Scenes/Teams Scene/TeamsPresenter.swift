@@ -16,7 +16,7 @@ protocol TeamsPresenter: class {
     func teamNameForIndex(index: Int) -> String?
     func teamShortNameForIndex(index: Int) -> String?
     func teamLogoUrlForIndex(index: Int) -> String
-    func didSelectItemAtIndex(index: Int)
+    func didSelectTeamAtIndex(index: Int)
 }
 
 class DefaultTeamsPresenter {
@@ -24,8 +24,8 @@ class DefaultTeamsPresenter {
     private var teams : [Team] = []
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamsView?
-    
     private let localStorage = DataBaseManager.shared
+    
     func fetchTeamsFromLocalStorage(withLeagueId leagueID: Int) {
         let leagues = localStorage.getObjects(ofType: Team.self).filter({$0.leagueId == leagueID})
         if !leagues.isEmpty  {
@@ -34,8 +34,10 @@ class DefaultTeamsPresenter {
         }
         else {
             print("show error message??")
+            
         }
     }
+    
     private func addTeamsToRealm(teams: [Team], andLeagueId leagueID: Int) {
         for team in teams {
             team.leagueId = leagueID
@@ -46,7 +48,7 @@ class DefaultTeamsPresenter {
 
 extension DefaultTeamsPresenter: TeamsPresenter {
     
-    func didSelectItemAtIndex(index: Int) {
+    func didSelectTeamAtIndex(index: Int) {
         view?.presentTeamInfoViewController(withTeam: teams[index])
     }
     
