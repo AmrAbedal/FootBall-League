@@ -27,7 +27,7 @@ class DefaultTeamsPresenter {
     
     private let localStorage = DataBaseManager.shared
     func fetchTeamsFromLocalStorage(withLeagueId leagueID: Int) {
-        let leagues = localStorage.getData(ofType: Team.self).filter({$0.leagueId == leagueID})
+        let leagues = localStorage.getObjects(ofType: Team.self).filter({$0.leagueId == leagueID})
         if !leagues.isEmpty  {
             self.teams = leagues
             view?.updateData()
@@ -75,9 +75,9 @@ extension DefaultTeamsPresenter: TeamsPresenter {
         }
         
         var reguest = URLRequest.init(url: url )
-        reguest.addValue(Constants.token, forHTTPHeaderField: Constants.tokenName)
+        reguest.addValue(FootBallAppConstants.token, forHTTPHeaderField: FootBallAppConstants.tokenName)
         
-        networkmanager.fetchData( withurlRequest: reguest, andResponceType: TeamsResult.self, andCompletion: { [weak self] (result) in
+        networkmanager.fetchData( withUrlRequest: reguest, andResponceType: TeamsResult.self, andCompletion: { [weak self] (result) in
             guard let strongSelf = self else {
                 return
             }

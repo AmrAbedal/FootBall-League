@@ -8,14 +8,23 @@
 
 import Foundation
 
-
 struct AppUrls {
-    static let leagues = "http://api.football-data.org/v2/competitions"
+    private static let versionNumber = 2
+    private static let baseUrl = "http://api.football-data.org"
+    private static let competitions = "/competitions"
+    private static let teams = "/teams"
+    private static var version: String {
+        return "/v\(versionNumber)"
+    }
+    static var leagues = baseUrl + version + competitions
+    //    static let leagues = "http://api.football-data.org/v2/competitions"
     
     static func teamUrlOfLeageId(leagueid: Int) -> String {
-        return "http://api.football-data.org/v2/competitions/\(leagueid)/teams"
+        return baseUrl + version + competitions + "/\(leagueid)" + teams
+        //        return "http://api.football-data.org/v2/competitions/\(leagueid)/teams"
     }
     static func teamInfoUrl(ofTeamId teamId: Int) -> String {
-        return "http://api.football-data.org/v2/teams/\(teamId)"
+        return baseUrl + version + teams + "/\(teamId)"
+        //        return "http://api.football-data.org/v2/teams/\(teamId)"
     }
 }

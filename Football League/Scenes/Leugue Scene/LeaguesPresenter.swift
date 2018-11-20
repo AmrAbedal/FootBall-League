@@ -24,7 +24,7 @@ class DefaultLeaguesPresenter {
     private weak var view: LeagesView?
     private let localStorage = DataBaseManager.shared
     func fetchDataFromLocalStorage() {
-        let leagues = localStorage.getData(ofType: League.self)
+        let leagues = localStorage.getObjects(ofType: League.self)
         if !leagues.isEmpty  {
             self.leagues = leagues
             view?.updateData()
@@ -42,7 +42,7 @@ class DefaultLeaguesPresenter {
 
 extension DefaultLeaguesPresenter: LeaguesPresenter {
     func backGroundColorForIndex(index: Int) -> UIColor {
-        if Constants.avaliableLeageIds.contains(leagues[index].id) {
+        if FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id) {
             return UIColor.purple
         }
         else {
@@ -51,7 +51,7 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
     }
     
     func didSelectItemAtIndex(index: Int) {
-        guard Constants.avaliableLeageIds.contains(leagues[index].id) else {
+        guard FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id) else {
             return
         }
         view?.presentTeamsViewController(withLeagueId:leagues[index].id )
@@ -71,15 +71,15 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
         }
         
         var reguest = URLRequest.init(url: url )
-        reguest.addValue(Constants.token, forHTTPHeaderField: Constants.tokenName)
+        reguest.addValue(FootBallAppConstants.token, forHTTPHeaderField: FootBallAppConstants.tokenName)
         
-        networkmanager.fetchData( withurlRequest: reguest, andResponceType: LeaguesResult.self, andCompletion: { [weak self] (result) in
+        networkmanager.fetchData( withUrlRequest: reguest, andResponceType: LeaguesResult.self, andCompletion: { [weak self] (result) in
             guard let strongSelf = self else {
                 return
             }
             if let leages = result as? LeaguesResult {
                 print(leages.count)
-                strongSelf.leagues = Array(leages.competitions)
+                strongSelf.leagues = Array(leages.leagues)
                 strongSelf.addObjectsToRealm(objects: strongSelf.leagues)
                 
                 strongSelf.view?.updateData()

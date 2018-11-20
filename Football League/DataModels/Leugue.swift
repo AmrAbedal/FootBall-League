@@ -12,7 +12,7 @@ import RealmSwift
 class League : Object, Decodable {
     @objc dynamic var id : Int = 0
     @objc dynamic var name : String?
-    var teams = List<Team>()
+    
     override class func primaryKey() -> String? {
         return "id"
     }

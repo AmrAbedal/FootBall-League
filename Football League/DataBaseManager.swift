@@ -12,7 +12,7 @@ import RealmSwift
 struct DataBaseManager {
     static let shared  = DataBaseManager.init()
     private init() {}
-    func getData<T> (ofType type: T.Type) -> [T] where T: Object {
+    func getObjects<T> (ofType type: T.Type) -> [T] where T: Object {
         do {
             let realm = try Realm()
             return Array(realm.objects(type))
@@ -46,19 +46,6 @@ extension Realm {
         }
         else {
             code()
-        }
-    }
-}
-
-
-extension Object {
-    func safeWrite(_ writeAction: () -> ()) {
-        if let realm = realm, !realm.isInWriteTransaction {
-            try? realm.write {
-                writeAction()
-            }
-        } else {
-            writeAction()
         }
     }
 }

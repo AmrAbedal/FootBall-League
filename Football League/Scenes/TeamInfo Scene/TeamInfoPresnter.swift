@@ -69,16 +69,16 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
         }
         
         var reguest = URLRequest.init(url: url )
-        reguest.addValue(Constants.token, forHTTPHeaderField: Constants.tokenName)
+        reguest.addValue(FootBallAppConstants.token, forHTTPHeaderField: FootBallAppConstants.tokenName)
         
-        networkmanager.fetchData( withurlRequest: reguest, andResponceType: TeamInfoResult.self, andCompletion: { [weak self] (result) in
+        networkmanager.fetchData( withUrlRequest: reguest, andResponceType: PlayersResult.self, andCompletion: { [weak self] (result) in
             guard let strongSelf = self else {
                 return
             }
             
-            if let teamInfo = result as? TeamInfoResult {
+            if let teamInfo = result as? PlayersResult {
                 print(teamInfo.id)
-                strongSelf.players = Array(teamInfo.squad)
+                strongSelf.players = Array(teamInfo.players)
                 strongSelf.addPlayrsToRealm(players: strongSelf.players, withTeamId: team.id)
                 
                 strongSelf.view?.updateData()
@@ -91,7 +91,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
         }
     }
     func fetchPlayerFromLocalStorage(withTeamId teamId: Int) {
-        let players = localStorage.getData(ofType: Player.self).filter({$0.teamID == teamId})
+        let players = localStorage.getObjects(ofType: Player.self).filter({$0.teamID == teamId})
         if !players.isEmpty  {
             self.players = players
             view?.updateData()

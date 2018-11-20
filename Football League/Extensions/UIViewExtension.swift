@@ -1,5 +1,5 @@
 //
-//  UIKItExtension.swift
+//  UIViewExtension.swift
 //  Football League
 //
 //  Created by Arabia-IT on 11/18/18.
@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 extension UIView {
     
     @IBInspectable var cornerRadius: CGFloat {

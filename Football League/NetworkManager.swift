@@ -9,15 +9,14 @@
 import Foundation
 
 class NetworkManager {
-    
-   static let shared =  NetworkManager.init()
+    static let shared =  NetworkManager.init()
     private init() {}
     typealias completionType = ((Decodable)->())
     typealias errorType = ((Error?)->())
     
-    func fetchData<T>(withurlRequest urlRequest: URLRequest,  andResponceType responceType: T.Type, andCompletion completion: @escaping completionType , andErrorHandler errorHandler: @escaping errorType ) where T : Decodable {
+    func fetchData<T>(withUrlRequest urlRequest: URLRequest,  andResponceType responceType: T.Type, andCompletion completion: @escaping completionType , andErrorHandler errorHandler: @escaping errorType ) where T : Decodable {
         
-      let task = URLSession.shared.dataTask(with: urlRequest) { (data, response
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response
             , error) in
             if  error != nil  {
                 DispatchQueue.main.async {
@@ -51,9 +50,9 @@ class NetworkManager {
         
         task.resume()
     }
-            
+    
 }
-        
+
 
 
 
