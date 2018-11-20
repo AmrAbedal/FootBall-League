@@ -10,24 +10,24 @@ import Foundation
 import RealmSwift
 
 protocol TeamsPresenter: class {
-    func attach(view: TeamsView , andLeagueId leagueId: Int)
-    func viewDidLoad()
+    func attach(view: TeamsView )
+    func viewDidLoad(withLeagueId leagueid: Int?)
     func numOfTeams() -> Int
-    func teamNameForIndex(index: Int) -> String
-    func teamShortNameForIndex(index: Int) -> String
+    func teamNameForIndex(index: Int) -> String?
+    func teamShortNameForIndex(index: Int) -> String?
     func teamLogoUrlForIndex(index: Int) -> String
     func didSelectItemAtIndex(index: Int)
 }
 
 class DefaultTeamsPresenter {
-    private var leagueId: Int!
+    
     private var teams : [Team] = []
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamsView?
     
     private let localStorage = DataBaseManager.shared
-    func fetchDataFromLocalStorage() {
-        let leagues = localStorage.getData(ofType: Team.self).filter({$0.leagueId == self.leagueId})
+    func fetchTeamsFromLocalStorage(withLeagueId leagueID: Int) {
+        let leagues = localStorage.getData(ofType: Team.self).filter({$0.leagueId == leagueID})
         if !leagues.isEmpty  {
             self.teams = leagues
             view?.updateData()
@@ -36,34 +36,41 @@ class DefaultTeamsPresenter {
             print("show error message??")
         }
     }
-    private func addTeamsToRealm(teams: [Team]) {
+    private func addTeamsToRealm(teams: [Team], andLeagueId leagueID: Int) {
         for team in teams {
-            team.leagueId = self.leagueId
+            team.leagueId = leagueID
             localStorage.addObject(object: team)
         }
     }
 }
 
 extension DefaultTeamsPresenter: TeamsPresenter {
+    
     func didSelectItemAtIndex(index: Int) {
         view?.presentTeamInfoViewController(withLeagueId: teams[index].id)
     }
     
-    func teamShortNameForIndex(index: Int) -> String {
-        return teams[index].shortName ?? ""
+    func teamShortNameForIndex(index: Int) -> String? {
+        return teams[index].shortName
     }
     
     func teamLogoUrlForIndex(index: Int) -> String {
         return teams[index].crestUrl ?? ""
     }
     
-    func attach(view: TeamsView, andLeagueId leagueId: Int) {
+    func attach(view: TeamsView) {
         self.view = view
-        self.leagueId = leagueId
+       
     }
-    func viewDidLoad() {
+    
+    func viewDidLoad(withLeagueId leagueId: Int?) {
+        guard let leagueID = leagueId else {
+            print("show Error Meassge")
+            return
+        }
         
-        guard let url = URL.init(string: AppUrls.teamUrlOfLeageId(leagueid: leagueId)) else {
+        guard let url = URL.init(string: AppUrls.teamUrlOfLeageId(leagueid: leagueID)) else {
+             print("show Error Meassge")
             return
         }
         
@@ -78,7 +85,7 @@ extension DefaultTeamsPresenter: TeamsPresenter {
             if let teams = result as? TeamsResult {
                 print(teams.count)
                 strongSelf.teams = Array(teams.teams)
-                strongSelf.addTeamsToRealm(teams: strongSelf.teams)
+                strongSelf.addTeamsToRealm(teams: strongSelf.teams, andLeagueId: leagueID)
                 
                 strongSelf.view?.updateData()
             }
@@ -86,12 +93,12 @@ extension DefaultTeamsPresenter: TeamsPresenter {
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.fetchDataFromLocalStorage()
+            strongSelf.fetchTeamsFromLocalStorage(withLeagueId: leagueID)
         }
     }
     
-    func teamNameForIndex(index: Int) -> String {
-        return teams[index].name ?? ""
+    func teamNameForIndex(index: Int) -> String? {
+        return teams[index].name 
     }
     
     func numOfTeams() -> Int {

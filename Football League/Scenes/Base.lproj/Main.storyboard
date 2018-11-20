@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -128,68 +127,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QQa-wb-87x">
                                 <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TeamCell" rowHeight="175" id="XU3-Ip-Tm1" customClass="TeamCell" customModule="Football_League" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="175"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XU3-Ip-Tm1" id="pHW-Zk-9Zv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="174.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2WH-YR-RD9">
-                                                    <rect key="frame" x="10" y="5" width="355" height="110"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OTa-Fw-ajM">
-                                                            <rect key="frame" x="5" y="5" width="100" height="100"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="100" id="OoN-La-RAA"/>
-                                                                <constraint firstAttribute="width" secondItem="OTa-Fw-ajM" secondAttribute="height" multiplier="1:1" id="jMT-cM-Jck"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6hi-7D-CWK">
-                                                            <rect key="frame" x="115" y="19" width="68.5" height="70.5"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSY-KO-e4o">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="68.5" height="35"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxG-DT-dJa">
-                                                                    <rect key="frame" x="0.0" y="45" width="68.5" height="25.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="OTa-Fw-ajM" secondAttribute="bottom" constant="5" id="7ei-lB-7aH"/>
-                                                        <constraint firstItem="OTa-Fw-ajM" firstAttribute="leading" secondItem="2WH-YR-RD9" secondAttribute="leading" constant="5" id="DqQ-eT-Zcu"/>
-                                                        <constraint firstItem="6hi-7D-CWK" firstAttribute="leading" secondItem="OTa-Fw-ajM" secondAttribute="trailing" constant="10" id="Enc-Pa-w0J"/>
-                                                        <constraint firstItem="OTa-Fw-ajM" firstAttribute="top" secondItem="2WH-YR-RD9" secondAttribute="top" constant="5" id="dIB-X6-Wd4"/>
-                                                        <constraint firstItem="6hi-7D-CWK" firstAttribute="centerY" secondItem="OTa-Fw-ajM" secondAttribute="centerY" id="qAZ-5G-m7U"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="2WH-YR-RD9" firstAttribute="centerX" secondItem="pHW-Zk-9Zv" secondAttribute="centerX" id="35L-d0-oR3"/>
-                                                <constraint firstItem="2WH-YR-RD9" firstAttribute="centerY" secondItem="pHW-Zk-9Zv" secondAttribute="centerY" id="Pbo-J8-dZO"/>
-                                                <constraint firstAttribute="bottom" secondItem="2WH-YR-RD9" secondAttribute="bottom" constant="5" id="UWE-t4-w2W"/>
-                                                <constraint firstItem="2WH-YR-RD9" firstAttribute="leading" secondItem="pHW-Zk-9Zv" secondAttribute="leading" constant="10" id="cwk-eU-veS"/>
-                                                <constraint firstAttribute="trailing" secondItem="2WH-YR-RD9" secondAttribute="trailing" constant="10" id="xQE-IW-u6B"/>
-                                                <constraint firstItem="2WH-YR-RD9" firstAttribute="top" secondItem="pHW-Zk-9Zv" secondAttribute="top" constant="5" id="z2g-JK-fHM"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="teamImageView" destination="OTa-Fw-ajM" id="5FP-yq-MO3"/>
-                                            <outlet property="teamNameLabel" destination="mSY-KO-e4o" id="zHD-fy-ExV"/>
-                                            <outlet property="teamShotNameLabel" destination="WxG-DT-dJa" id="5jx-PZ-jii"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Lo3-dv-L2s" id="ybR-e4-dhW"/>
                                     <outlet property="delegate" destination="Lo3-dv-L2s" id="KPT-OX-JZZ"/>

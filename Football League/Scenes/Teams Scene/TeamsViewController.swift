@@ -15,20 +15,26 @@ protocol TeamsView: class {
 }
 
 class TeamsViewController: UIViewController {
-    var leagueId: Int!
+    var leagueId: Int?
     let presenter: TeamsPresenter = DefaultTeamsPresenter()
     @IBOutlet weak var teamsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
          setupTeamTable()
-        presenter.attach(view: self, andLeagueId: leagueId)
-        presenter.viewDidLoad()
+        presenter.attach(view: self)
+        presenter.viewDidLoad(withLeagueId : leagueId)
         // Do any additional setup after loading the view.
     }
     private func setupTeamTable() {
         title = "Teams"
+        registerTeamsTableCells()
         teamsTableView.rowHeight = UITableViewAutomaticDimension
         teamsTableView.estimatedRowHeight = 150
+    }
+    private func registerTeamsTableCells() {
+        
+        let teamCellNib = UINib(nibName: TeamCell.identifier, bundle: nil)
+        teamsTableView.register(teamCellNib, forCellReuseIdentifier: TeamCell.identifier)
     }
 }
 
