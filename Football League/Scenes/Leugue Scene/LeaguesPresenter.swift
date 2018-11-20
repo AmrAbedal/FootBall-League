@@ -73,11 +73,11 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
         var reguest = URLRequest.init(url: url )
         reguest.addValue(Constants.token, forHTTPHeaderField: Constants.tokenName)
         
-        networkmanager.fetchData( withurlRequest: reguest, andResponceType: Leagues.self, andCompletion: { [weak self] (result) in
+        networkmanager.fetchData( withurlRequest: reguest, andResponceType: LeaguesResult.self, andCompletion: { [weak self] (result) in
             guard let strongSelf = self else {
                 return
             }
-            if let leages = result as? Leagues {
+            if let leages = result as? LeaguesResult {
                 print(leages.count)
                 strongSelf.leagues = Array(leages.competitions)
                 strongSelf.addObjectsToRealm(objects: strongSelf.leagues)

@@ -70,12 +70,12 @@ extension DefaultTeamsPresenter: TeamsPresenter {
         var reguest = URLRequest.init(url: url )
         reguest.addValue(Constants.token, forHTTPHeaderField: Constants.tokenName)
         
-        networkmanager.fetchData( withurlRequest: reguest, andResponceType: Teams.self, andCompletion: { [weak self] (result) in
+        networkmanager.fetchData( withurlRequest: reguest, andResponceType: TeamsResult.self, andCompletion: { [weak self] (result) in
             guard let strongSelf = self else {
                 return
             }
             
-            if let teams = result as? Teams {
+            if let teams = result as? TeamsResult {
                 print(teams.count)
                 strongSelf.teams = Array(teams.teams)
                 strongSelf.addTeamsToRealm(teams: strongSelf.teams)

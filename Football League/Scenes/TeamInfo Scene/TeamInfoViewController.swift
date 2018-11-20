@@ -56,8 +56,8 @@ extension TeamInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerViewCell = tableView.dequeueReusableCell(withIdentifier: TeamInfoHeaderView.identifier) as! TeamInfoHeaderView
         headerViewCell.teamNameLabel.text = presenter.teamName()
-        headerViewCell.teamInfoLabel.text = presenter.teamShortName()
-        headerViewCell.teamImage.sd_setImage(with: URL(string: presenter.teamLogoUrl()), placeholderImage: nil)
+        headerViewCell.teamShortNameLabel.text = presenter.teamShortName()
+        headerViewCell.teamImageView.sd_setImage(with: URL(string: presenter.teamLogoUrl()), placeholderImage: nil)
         return headerViewCell
     }
     

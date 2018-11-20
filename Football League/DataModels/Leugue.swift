@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Leagues : Object, Decodable {
+class LeaguesResult : Object, Decodable {
     @objc dynamic var count : Int = 0
     var competitions = List<League>()
     private enum CodingKeys: String, CodingKey {

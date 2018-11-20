@@ -22,7 +22,7 @@ protocol TeamInfoPresenter: class {
 }
 
 class DefaultTeamInfoPresenter {
-    private var teamInfo: TeamInfo?
+    private var teamInfo: TeamInfoResult?
     private var players : [Player] = []
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamInfoView?
@@ -70,12 +70,12 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
         var reguest = URLRequest.init(url: url )
         reguest.addValue(Constants.token, forHTTPHeaderField: Constants.tokenName)
         
-        networkmanager.fetchData( withurlRequest: reguest, andResponceType: TeamInfo.self, andCompletion: { [weak self] (result) in
+        networkmanager.fetchData( withurlRequest: reguest, andResponceType: TeamInfoResult.self, andCompletion: { [weak self] (result) in
             guard let strongSelf = self else {
                 return
             }
             
-            if let teamInfo = result as? TeamInfo {
+            if let teamInfo = result as? TeamInfoResult {
                 print(teamInfo.id)
                 strongSelf.teamInfo = teamInfo
                 strongSelf.players = Array(teamInfo.squad)

@@ -10,7 +10,7 @@ import Foundation
 import  RealmSwift
 
 
-class Teams : Object, Decodable {
+class TeamsResult : Object, Decodable {
     @objc dynamic var count : Int = 0
     var teams = List<Team>()
     private enum CodingKeys: String, CodingKey {

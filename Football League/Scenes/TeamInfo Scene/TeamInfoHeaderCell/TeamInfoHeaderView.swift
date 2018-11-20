@@ -11,15 +11,11 @@ import UIKit
 class TeamInfoHeaderView: UITableViewCell {
     static let identifier = "TeamInfoHeaderView"
     @IBOutlet weak var teamNameLabel: UILabel!
-    
-    @IBOutlet weak var teamInfoLabel: UILabel!
-    @IBOutlet weak var teamImage: UIImageView!
+    @IBOutlet weak var teamShortNameLabel: UILabel!
+    @IBOutlet weak var teamImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-  
-
 }
