@@ -9,40 +9,6 @@
 import Foundation
 import RealmSwift
 
-
-class TeamInfoResult : Object, Decodable {
-    @objc dynamic var id : Int = 0
-    @objc dynamic var name : String?
-    @objc dynamic var shortName : String?
-    @objc dynamic var crestUrl : String?
-    @objc dynamic var founded : Int = 0
-    var squad = List<Player>()
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case shortName
-        case crestUrl
-        case founded
-        case squad = "squad"
-    }
-    
-    public required convenience init(from decoder: Decoder) throws {
-        self.init()
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.name = try container.decode(String?.self, forKey: .name)
-        self.shortName = try container.decode(String?.self, forKey: .shortName)
-        self.crestUrl = try container.decode(String?.self, forKey: .crestUrl)
-        self.founded = try container.decode(Int.self, forKey: .founded)
-        let squad = try container.decodeIfPresent([Player].self, forKey: .squad) ?? [Player()]
-        self.squad.append(objectsIn: squad)
-        
-    }
-    
-}
-
-
 class Player : Object, Decodable {
     @objc dynamic var teamID : Int = 0
     @objc dynamic var id : Int = 0
@@ -61,36 +27,3 @@ class Player : Object, Decodable {
         case nationality
     }
 }
-
-
-
-//{
-//    "id": 758,
-//    "area": {
-//        "id": 2257,
-//        "name": "Uruguay"
-//    },
-//    "activeCompetitions": [],
-//    "name": "Uruguay",
-//    "shortName": "Uruguay",
-//    "tla": "URU",
-//    "crestUrl": null,
-//    "address": "Guayaybo 1531 Montevideo 11200",
-//    "phone": "+59 (82) 4004814",
-//    "website": "http://www.auf.org.uy",
-//    "email": "auf@auf.org.uy",
-//    "founded": 1900,
-//    "clubColors": "Sky Blue / White / Black",
-//    "venue": "Olimpiyskiy Stadion Fisht",
-//    "squad": [
-//    {
-//    "id": 96,
-//    "name": "Federico Valverde",
-//    "position": "Midfielder",
-//    "dateOfBirth": "1998-07-22T00:00:00Z",
-//    "countryOfBirth": "Uruguay",
-//    "nationality": "Uruguay",
-//    "shirtNumber": null,
-//    "role": "PLAYER"
-//    },
-
