@@ -52,10 +52,6 @@ extension TeamInfoViewController: UITableViewDataSource {
         return presenter.numOfPlayers()
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 250
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerViewCell = tableView.dequeueReusableCell(withIdentifier: TeamInfoHeaderView.identifier) as! TeamInfoHeaderView
         headerViewCell.teamNameLabel.text = presenter.teamName()
@@ -72,6 +68,11 @@ extension TeamInfoViewController: UITableViewDataSource {
         
         playerCell.playerNationalityLabel.text =  presenter.playerNationalityForIndex(index: indexPath.row)
         return playerCell
+    }
+}
+extension TeamInfoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 250
     }
 }
 
