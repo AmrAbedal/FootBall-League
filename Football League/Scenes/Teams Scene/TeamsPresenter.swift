@@ -67,12 +67,12 @@ extension DefaultTeamsPresenter: TeamsPresenter {
     
     func viewDidLoad(withLeagueId leagueId: Int?) {
         guard let leagueID = leagueId else {
-            print("show Error Meassge")
+            print("Error in Fetching Data From Server")
             return
         }
         
         guard let url = URL.init(string: AppUrls.teamUrlOfLeageId(leagueid: leagueID)) else {
-             print("show Error Meassge")
+               print("Error in Fetching Data From Server")
             return
         }
         

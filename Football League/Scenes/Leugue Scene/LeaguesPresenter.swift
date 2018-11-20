@@ -23,48 +23,10 @@ class DefaultLeaguesPresenter {
     private let networkmanager = NetworkManager.shared
     private weak var view: LeagesView?
     private let localStorage = DataBaseManager.shared
-    func fetchDataFromLocalStorage() {
-        let leagues = localStorage.getObjects(ofType: League.self)
-        if !leagues.isEmpty  {
-            self.leagues = leagues
-            view?.updateData()
-        }
-        else {
-            print("show error message??")
-        }
-    }
-    private func addObjectsToRealm(objects: [Object]) {
-        for object in objects {
-            localStorage.addOrUpdateObject(object: object)
-        }
-    }
-}
-
-extension DefaultLeaguesPresenter: LeaguesPresenter {
-    func backGroundColorForIndex(index: Int) -> UIColor {
-        if FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id) {
-            return UIColor.purple
-        }
-        else {
-            return UIColor.cyan
-        }
-    }
     
-    func didSelectItemAtIndex(index: Int) {
-        guard FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id) else {
-            return
-        }
-        view?.presentTeamsViewController(withLeagueId:leagues[index].id )
-    }
-    
-    func attach(view: LeagesView) {
-        self.view = view
-    }
-    
-    func viewDidLoad() {
-        
+    private func loadData() {
         guard let url = URL.init(string: AppUrls.leagues) else {
-            print("show Error Message")
+            print("Error in loading data from Server")
             return
         }
         
@@ -88,6 +50,51 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
             }
             strongSelf.fetchDataFromLocalStorage()
         }
+    }
+    
+    private func fetchDataFromLocalStorage() {
+        let leagues = localStorage.getObjects(ofType: League.self)
+        if !leagues.isEmpty  {
+            self.leagues = leagues
+            view?.updateData()
+        }
+        else {
+            print("please open Wifi OR Data")
+        }
+    }
+    
+    private func addObjectsToRealm(objects: [Object]) {
+        for object in objects {
+            localStorage.addOrUpdateObject(object: object)
+        }
+    }
+   
+}
+
+
+extension DefaultLeaguesPresenter: LeaguesPresenter {
+    func backGroundColorForIndex(index: Int) -> UIColor {
+        if FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id) {
+            return UIColor.purple
+        }
+        else {
+            return UIColor.cyan
+        }
+    }
+    
+    func didSelectItemAtIndex(index: Int) {
+        guard FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id) else {
+            return
+        }
+        view?.presentTeamsViewController(withLeagueId:leagues[index].id )
+    }
+    
+    func attach(view: LeagesView) {
+        self.view = view
+    }
+    
+    func viewDidLoad() {
+       loadData()
     }
     
     func leagueNameForIndex(index: Int) -> String? {
