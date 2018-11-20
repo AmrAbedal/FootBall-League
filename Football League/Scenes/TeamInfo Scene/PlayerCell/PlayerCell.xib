@@ -17,28 +17,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGu-Tn-kjs">
-                    <rect key="frame" x="0.0" y="-0.5" width="310" height="145"/>
+                    <rect key="frame" x="10" y="4.5" width="290" height="135"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgT-6F-9rX">
-                            <rect key="frame" x="20" y="10" width="48" height="53.5"/>
+                            <rect key="frame" x="20" y="10" width="48" height="43.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5l-TD-eaz">
-                            <rect key="frame" x="20" y="73.5" width="42" height="20.5"/>
+                            <rect key="frame" x="20" y="63.5" width="42" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oa8-SC-3Uw">
-                            <rect key="frame" x="20" y="104" width="42" height="21"/>
+                            <rect key="frame" x="20" y="94" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.81568627449999997" green="0.82745098039999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="fgT-6F-9rX" firstAttribute="top" secondItem="sGu-Tn-kjs" secondAttribute="top" constant="10" id="FyM-7g-B9v"/>
                         <constraint firstItem="K5l-TD-eaz" firstAttribute="top" secondItem="fgT-6F-9rX" secondAttribute="bottom" constant="10" id="OJT-0I-duu"/>
@@ -48,13 +48,24 @@
                         <constraint firstItem="fgT-6F-9rX" firstAttribute="leading" secondItem="sGu-Tn-kjs" secondAttribute="leading" constant="20" id="sxP-Pp-cFm"/>
                         <constraint firstAttribute="bottom" secondItem="oa8-SC-3Uw" secondAttribute="bottom" constant="20" id="tkb-3f-lMR"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="sGu-Tn-kjs" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="8Bt-7D-Q0O"/>
-                <constraint firstItem="sGu-Tn-kjs" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="UYB-ss-RVq"/>
-                <constraint firstItem="sGu-Tn-kjs" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="as0-Ch-nRS"/>
+                <constraint firstItem="sGu-Tn-kjs" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" constant="-10" id="UYB-ss-RVq"/>
+                <constraint firstItem="sGu-Tn-kjs" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-20" id="as0-Ch-nRS"/>
                 <constraint firstItem="sGu-Tn-kjs" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="m1x-wI-KTd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

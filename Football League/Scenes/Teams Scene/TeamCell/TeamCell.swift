@@ -11,6 +11,7 @@ import UIKit
 class TeamCell: UITableViewCell {
     static let identifier = "TeamCell"
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var teamNameLabel: UILabel!
     
