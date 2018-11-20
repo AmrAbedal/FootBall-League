@@ -26,6 +26,12 @@ class TeamInfoViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     private func setupTeamTable() {
+        let teamInfoHeaderViewNib = UINib(nibName: TeamInfoHeaderView.identifier, bundle: nil)
+        playerTable.register(teamInfoHeaderViewNib, forCellReuseIdentifier: TeamInfoHeaderView.identifier)
+        
+        let playerCellNib = UINib(nibName: PlayerCell.identifier, bundle: nil)
+        playerTable.register(playerCellNib, forCellReuseIdentifier: PlayerCell.identifier)
+        
         playerTable.rowHeight = UITableViewAutomaticDimension
         playerTable.estimatedRowHeight = 150
     }
@@ -43,7 +49,7 @@ extension TeamInfoViewController: UITableViewDataSource {
         return 300
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerViewCell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.identifier) as! HeaderViewCell
+        let headerViewCell = tableView.dequeueReusableCell(withIdentifier: TeamInfoHeaderView.identifier) as! TeamInfoHeaderView
         return headerViewCell
     }
     

@@ -10,6 +10,8 @@ import UIKit
 
 class PlayerCell: UITableViewCell {
 static let identifier = "PlayerCell"
+    
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var playerNationalityLabel: UILabel!
     @IBOutlet weak var playerPositionLabel: UILabel!
     @IBOutlet weak var playerNameLabel: UILabel!
@@ -18,7 +20,5 @@ static let identifier = "PlayerCell"
         super.awakeFromNib()
         // Initialization code
     }
-
- 
 
 }
