@@ -10,57 +10,60 @@ import Foundation
 import RealmSwift
 
 protocol TeamInfoPresenter: class {
-    func attach(view: TeamInfoView , andTeamId leagueId: Int)
-    func viewDidLoad()
-    func numOfTeams() -> Int
-    func playerNameForIndex(index: Int) -> String
-    func playerPositionForIndex(index: Int) -> String
-    func playerNationalityForIndex(index: Int) -> String
+    func teamName() -> String?
+    func teamShortName() -> String?
+    func teamLogoUrl() -> String
+    func attach(view: TeamInfoView)
+    func viewDidLoad(withTeamID teamId: Int?)
+    func numOfPlayers() -> Int
+    func playerNameForIndex(index: Int) -> String?
+    func playerPositionForIndex(index: Int) -> String?
+    func playerNationalityForIndex(index: Int) -> String?
 }
 
 class DefaultTeamInfoPresenter {
-    private var teamID: Int!
+    private var teamInfo: TeamInfo?
     private var players : [Player] = []
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamInfoView?
     private let localStorage = DataBaseManager.shared
     
-    func fetchDataFromLocalStorage() {
-        let players = localStorage.getData(ofType: Player.self).filter({$0.teamID == self.teamID})
-        if !players.isEmpty  {
-            self.players = players
-            view?.updateData()
-        }
-        else {
-            print("show error message??")
-        }
-    }
-    private func addPlayrsToRealm(players: [Player]) {
-        for player in players {
-            player.teamID = self.teamID
-            localStorage.addObject(object: player)
-        }
-    }
+  
 }
 
 extension DefaultTeamInfoPresenter: TeamInfoPresenter {
-    
-    func playerPositionForIndex(index: Int) -> String {
-        return players[index].position ?? ""
+    func teamName() -> String? {
+        return teamInfo?.name
     }
     
-    func playerNationalityForIndex(index: Int) -> String {
-        return players[index].nationality ?? ""
+    func teamShortName() -> String? {
+        return teamInfo?.shortName
     }
     
-    func attach(view: TeamInfoView, andTeamId teamId: Int) {
+    func teamLogoUrl() -> String {
+        return teamInfo?.crestUrl ?? ""
+    }
+    
+    
+    func playerPositionForIndex(index: Int) -> String? {
+        return players[index].position
+    }
+    
+    func playerNationalityForIndex(index: Int) -> String? {
+        return players[index].nationality
+    }
+    
+    func attach(view: TeamInfoView) {
         self.view = view
-        self.teamID = teamId
     }
     
-    func viewDidLoad() {
-        
+    func viewDidLoad(withTeamID teamID: Int?) {
+        guard let teamID = teamID else {
+            print("show error message")
+            return
+        }
         guard let url = URL.init(string: AppUrls.teamInfoUrl(ofTeamId: teamID)) else {
+            print("show Error Message")
             return
         }
         
@@ -74,8 +77,9 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
             
             if let teamInfo = result as? TeamInfo {
                 print(teamInfo.id)
+                strongSelf.teamInfo = teamInfo
                 strongSelf.players = Array(teamInfo.squad)
-                strongSelf.addPlayrsToRealm(players: strongSelf.players)
+                strongSelf.addPlayrsToRealm(players: strongSelf.players, withTeamId: teamID)
                 
                 strongSelf.view?.updateData()
             }
@@ -83,15 +87,31 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.fetchDataFromLocalStorage()
+            strongSelf.fetchPlayerFromLocalStorage(withTeamId: teamID )
+        }
+    }
+    func fetchPlayerFromLocalStorage(withTeamId teamId: Int) {
+        let players = localStorage.getData(ofType: Player.self).filter({$0.teamID == teamId})
+        if !players.isEmpty  {
+            self.players = players
+            view?.updateData()
+        }
+        else {
+            print("show error message??")
+        }
+    }
+    private func addPlayrsToRealm(players: [Player] , withTeamId teamId: Int) {
+        for player in players {
+            player.teamID = teamId
+            localStorage.addObject(object: player)
         }
     }
     
-    func playerNameForIndex(index: Int) -> String {
-        return players[index].name ?? ""
+    func playerNameForIndex(index: Int) -> String? {
+        return players[index].name 
     }
     
-    func numOfTeams() -> Int {
+    func numOfPlayers() -> Int {
         return players.count
     }
 }

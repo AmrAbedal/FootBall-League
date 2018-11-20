@@ -7,33 +7,38 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol TeamInfoView: class {
-       func updateData()
+    func updateData()
 }
 
 class TeamInfoViewController: UIViewController {
-
-    var teamId: Int!
+    
+    var teamId: Int?
     let presenter: TeamInfoPresenter = DefaultTeamInfoPresenter()
     
-    @IBOutlet weak var playerTable: UITableView!
+    @IBOutlet weak var teamInfoTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTeamTable()
-        presenter.attach(view: self, andTeamId: teamId)
-        presenter.viewDidLoad()
+        presenter.attach(view: self)
+        presenter.viewDidLoad(withTeamID: teamId)
         // Do any additional setup after loading the view.
     }
+    
     private func setupTeamTable() {
+        registerTeamTableCells()
+        teamInfoTable.rowHeight = UITableViewAutomaticDimension
+        teamInfoTable.estimatedRowHeight = 150
+    }
+    
+    private func registerTeamTableCells() {
         let teamInfoHeaderViewNib = UINib(nibName: TeamInfoHeaderView.identifier, bundle: nil)
-        playerTable.register(teamInfoHeaderViewNib, forCellReuseIdentifier: TeamInfoHeaderView.identifier)
+        teamInfoTable.register(teamInfoHeaderViewNib, forCellReuseIdentifier: TeamInfoHeaderView.identifier)
         
         let playerCellNib = UINib(nibName: PlayerCell.identifier, bundle: nil)
-        playerTable.register(playerCellNib, forCellReuseIdentifier: PlayerCell.identifier)
-        
-        playerTable.rowHeight = UITableViewAutomaticDimension
-        playerTable.estimatedRowHeight = 150
+        teamInfoTable.register(playerCellNib, forCellReuseIdentifier: PlayerCell.identifier)
     }
 }
 
@@ -43,13 +48,16 @@ extension TeamInfoViewController: UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.numOfTeams()
+        return presenter.numOfPlayers()
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 300
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerViewCell = tableView.dequeueReusableCell(withIdentifier: TeamInfoHeaderView.identifier) as! TeamInfoHeaderView
+        headerViewCell.teamNameLabel.text = presenter.teamName()
+        headerViewCell.teamInfoLabel.text = presenter.teamShortName()
+        headerViewCell.teamImage.sd_setImage(with: URL(string: presenter.teamLogoUrl()), placeholderImage: nil)
         return headerViewCell
     }
     
@@ -73,7 +81,7 @@ extension TeamInfoViewController: UITableViewDelegate {
 
 extension TeamInfoViewController: TeamInfoView {
     func updateData() {
-        playerTable.reloadData()
+        teamInfoTable.reloadData()
     }
 }
 

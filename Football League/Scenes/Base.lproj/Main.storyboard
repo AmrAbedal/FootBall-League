@@ -241,7 +241,7 @@
                         <viewLayoutGuide key="safeArea" id="7MW-vk-M7M"/>
                     </view>
                     <connections>
-                        <outlet property="playerTable" destination="00o-AY-1Ss" id="cvP-95-gWf"/>
+                        <outlet property="teamInfoTable" destination="00o-AY-1Ss" id="cvP-95-gWf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfG-fD-n4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
