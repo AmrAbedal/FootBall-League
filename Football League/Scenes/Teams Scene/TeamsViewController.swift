@@ -11,7 +11,7 @@ import SDWebImage
 
 protocol TeamsView: class {
     func updateData()
-     func presentTeamInfoViewController(withLeagueId leagueId: Int)
+     func presentTeamInfoViewController(withTeam team: Team)
 }
 
 class TeamsViewController: UIViewController {
@@ -60,11 +60,12 @@ extension TeamsViewController: UITableViewDelegate {
 }
 
 extension TeamsViewController: TeamsView {
-    func presentTeamInfoViewController(withLeagueId leagueId: Int) {
+    func presentTeamInfoViewController(withTeam team: Team) {
         perform(segue: "TeamInfoViewController") { (teamsViewController: TeamInfoViewController) in
-            teamsViewController.teamId = leagueId
+            teamsViewController.team = team
+        }
     }
-    }
+    
     func updateData() {
         teamsTableView.reloadData()
     }

@@ -35,7 +35,7 @@ class DefaultLeaguesPresenter {
     }
     private func addObjectsToRealm(objects: [Object]) {
         for object in objects {
-            localStorage.addObject(object: object)
+            localStorage.addOrUpdateObject(object: object)
         }
     }
 }

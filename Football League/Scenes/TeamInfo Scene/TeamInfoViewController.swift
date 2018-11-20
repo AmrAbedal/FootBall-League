@@ -15,7 +15,7 @@ protocol TeamInfoView: class {
 
 class TeamInfoViewController: UIViewController {
     
-    var teamId: Int?
+    var team: Team?
     let presenter: TeamInfoPresenter = DefaultTeamInfoPresenter()
     
     @IBOutlet weak var teamInfoTable: UITableView!
@@ -23,7 +23,7 @@ class TeamInfoViewController: UIViewController {
         super.viewDidLoad()
         setupTeamTable()
         presenter.attach(view: self)
-        presenter.viewDidLoad(withTeamID: teamId)
+        presenter.viewDidLoad(withTeam: team)
         // Do any additional setup after loading the view.
     }
     

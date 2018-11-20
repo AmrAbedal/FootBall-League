@@ -14,7 +14,7 @@ protocol TeamInfoPresenter: class {
     func teamShortName() -> String?
     func teamLogoUrl() -> String
     func attach(view: TeamInfoView)
-    func viewDidLoad(withTeamID teamId: Int?)
+    func viewDidLoad(withTeam team: Team?)
     func numOfPlayers() -> Int
     func playerNameForIndex(index: Int) -> String?
     func playerPositionForIndex(index: Int) -> String?
@@ -22,26 +22,25 @@ protocol TeamInfoPresenter: class {
 }
 
 class DefaultTeamInfoPresenter {
-    private var teamInfo: TeamInfoResult?
+    private var team: Team?
     private var players : [Player] = []
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamInfoView?
     private let localStorage = DataBaseManager.shared
     
-  
 }
 
 extension DefaultTeamInfoPresenter: TeamInfoPresenter {
     func teamName() -> String? {
-        return teamInfo?.name
+        return team?.name
     }
     
     func teamShortName() -> String? {
-        return teamInfo?.shortName
+        return team?.shortName
     }
     
     func teamLogoUrl() -> String {
-        return teamInfo?.crestUrl ?? ""
+        return team?.crestUrl ?? ""
     }
     
     
@@ -57,12 +56,14 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
         self.view = view
     }
     
-    func viewDidLoad(withTeamID teamID: Int?) {
-        guard let teamID = teamID else {
+    func viewDidLoad(withTeam team: Team?) {
+        guard let team = team else {
             print("show error message")
             return
         }
-        guard let url = URL.init(string: AppUrls.teamInfoUrl(ofTeamId: teamID)) else {
+        self.team = team
+        view?.updateData()
+        guard let url = URL.init(string: AppUrls.teamInfoUrl(ofTeamId: team.id)) else {
             print("show Error Message")
             return
         }
@@ -77,9 +78,8 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
             
             if let teamInfo = result as? TeamInfoResult {
                 print(teamInfo.id)
-                strongSelf.teamInfo = teamInfo
                 strongSelf.players = Array(teamInfo.squad)
-                strongSelf.addPlayrsToRealm(players: strongSelf.players, withTeamId: teamID)
+                strongSelf.addPlayrsToRealm(players: strongSelf.players, withTeamId: team.id)
                 
                 strongSelf.view?.updateData()
             }
@@ -87,7 +87,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.fetchPlayerFromLocalStorage(withTeamId: teamID )
+            strongSelf.fetchPlayerFromLocalStorage(withTeamId: team.id )
         }
     }
     func fetchPlayerFromLocalStorage(withTeamId teamId: Int) {
@@ -103,7 +103,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
     private func addPlayrsToRealm(players: [Player] , withTeamId teamId: Int) {
         for player in players {
             player.teamID = teamId
-            localStorage.addObject(object: player)
+            localStorage.addOrUpdateObject(object: player)
         }
     }
     

@@ -22,7 +22,7 @@ struct DataBaseManager {
         }
     }
     
-    func addObject(object: Object) {
+    func addOrUpdateObject(object: Object) {
         do {
             let realm = try Realm()
             realm.safeWrite(code: {

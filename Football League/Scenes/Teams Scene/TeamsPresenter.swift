@@ -39,7 +39,7 @@ class DefaultTeamsPresenter {
     private func addTeamsToRealm(teams: [Team], andLeagueId leagueID: Int) {
         for team in teams {
             team.leagueId = leagueID
-            localStorage.addObject(object: team)
+            localStorage.addOrUpdateObject(object: team)
         }
     }
 }
@@ -47,7 +47,7 @@ class DefaultTeamsPresenter {
 extension DefaultTeamsPresenter: TeamsPresenter {
     
     func didSelectItemAtIndex(index: Int) {
-        view?.presentTeamInfoViewController(withLeagueId: teams[index].id)
+        view?.presentTeamInfoViewController(withTeam: teams[index])
     }
     
     func teamShortNameForIndex(index: Int) -> String? {
