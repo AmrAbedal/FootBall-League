@@ -10,7 +10,7 @@ import UIKit
 
 class LeagueCell: UITableViewCell {
     
-    static let identifier = "leagueCell"
+    static let identifier = "LeagueCell"
     @IBOutlet weak var matchCountLabel: UILabel!
     @IBOutlet weak var teamsCountLabel: UILabel!
     @IBOutlet weak var containerView: UIView!

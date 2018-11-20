@@ -26,18 +26,14 @@ class LeuguesViewController: UIViewController {
         presenter.viewDidLoad()
     }
     private func setupLeaguesTableview() {
+        registerLeaguesTableCells()
         leaguesTableView.estimatedRowHeight = 100
         leaguesTableView.rowHeight = UITableViewAutomaticDimension
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let identifier = segue.identifier else { return }
-//        switch identifier {
-//        case "TeamsViewController": let teamsViewController  = segue.destination as! TeamsViewController
-//        teamsViewController.leagueId = presenter.
-//        default:
-//            break
-//        }
-//    }
+    private func registerLeaguesTableCells() {
+        let leagueCellNib = UINib(nibName: LeagueCell.identifier, bundle: nil)
+        leaguesTableView.register(leagueCellNib, forCellReuseIdentifier: LeagueCell.identifier)
+    }
 }
 
 extension LeuguesViewController: LeagesView {

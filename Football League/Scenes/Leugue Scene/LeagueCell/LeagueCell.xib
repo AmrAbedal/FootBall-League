@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LeagueCell" customModule="Football_League" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="195"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGY-M5-TPr">
+                    <rect key="frame" x="10" y="5" width="335" height="185"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rk-mO-rUi">
+                            <rect key="frame" x="20" y="10" width="48" height="134"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="20 team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30d-7V-sGP">
+                            <rect key="frame" x="20" y="154" width="182" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="50 match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQV-lV-R6m">
+                            <rect key="frame" x="242" y="154" width="73" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="dQV-lV-R6m" secondAttribute="bottom" constant="10" id="1O1-J6-A81"/>
+                        <constraint firstItem="30d-7V-sGP" firstAttribute="leading" secondItem="lGY-M5-TPr" secondAttribute="leading" constant="20" id="5Tk-UJ-e3u"/>
+                        <constraint firstItem="dQV-lV-R6m" firstAttribute="leading" secondItem="30d-7V-sGP" secondAttribute="trailing" constant="40" id="BTX-QN-64r"/>
+                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="dQV-lV-R6m" secondAttribute="trailing" constant="20" id="Re5-bs-hsL"/>
+                        <constraint firstItem="3Rk-mO-rUi" firstAttribute="top" secondItem="lGY-M5-TPr" secondAttribute="top" constant="10" id="UJ3-DD-IDM"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Rk-mO-rUi" secondAttribute="trailing" constant="20" id="VKF-nT-2OD"/>
+                        <constraint firstAttribute="bottom" secondItem="30d-7V-sGP" secondAttribute="bottom" constant="10" id="dla-s6-bns"/>
+                        <constraint firstItem="30d-7V-sGP" firstAttribute="top" secondItem="3Rk-mO-rUi" secondAttribute="bottom" constant="10" id="iBh-xw-bo9"/>
+                        <constraint firstItem="3Rk-mO-rUi" firstAttribute="leading" secondItem="lGY-M5-TPr" secondAttribute="leading" constant="20" id="jDL-YA-gxH"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lGY-M5-TPr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="8RG-4f-583"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lGY-M5-TPr" secondAttribute="bottom" constant="5" id="PoX-9e-BPg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lGY-M5-TPr" secondAttribute="trailing" constant="10" id="XwL-h5-twc"/>
+                <constraint firstItem="lGY-M5-TPr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="n79-4e-zUp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="containerView" destination="lGY-M5-TPr" id="N4p-g2-fvD"/>
+                <outlet property="leagueNameLabel" destination="3Rk-mO-rUi" id="C6A-7E-pUQ"/>
+                <outlet property="matchCountLabel" destination="dQV-lV-R6m" id="Nlp-pE-hKr"/>
+                <outlet property="teamsCountLabel" destination="30d-7V-sGP" id="0H1-1H-EH8"/>
+            </connections>
+            <point key="canvasLocation" x="22.5" y="-103.5"/>
+        </view>
+    </objects>
+</document>
