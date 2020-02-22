@@ -29,7 +29,7 @@ class TeamInfoViewController: UIViewController {
     
     private func setupTeamTable() {
         registerTeamTableCells()
-        teamInfoTable.rowHeight = UITableViewAutomaticDimension
+        teamInfoTable.rowHeight = UITableView.automaticDimension
         teamInfoTable.estimatedRowHeight = 150
     }
     

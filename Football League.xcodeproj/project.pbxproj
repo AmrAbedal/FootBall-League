@@ -17,6 +17,12 @@
 		63EA992521A4372F00B2CC9D /* LeaguesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA992421A4372F00B2CC9D /* LeaguesResult.swift */; };
 		63EA992721A4551700B2CC9D /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA992621A4551600B2CC9D /* Segues.swift */; };
 		95B2B3E51EB958689CD0895F /* Pods_Football_League.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E043CA13ECB3D00FA80FF773 /* Pods_Football_League.framework */; };
+		A0E22A762401460600368573 /* LeaguesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A752401460600368573 /* LeaguesViewModel.swift */; };
+		A0E22A7824014B1100368573 /* LeaguesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A7724014B1100368573 /* LeaguesApi.swift */; };
+		A0E22A7B24014F3B00368573 /* LeaguesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A7A24014F3B00368573 /* LeaguesDataSource.swift */; };
+		A0E22A7E240158C600368573 /* fetchLeaguesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A7D240158C600368573 /* fetchLeaguesUseCase.swift */; };
+		A0E22A8024015DC000368573 /* RealmLeaguesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A7F24015DC000368573 /* RealmLeaguesDataSource.swift */; };
+		A0E22A8224015F6E00368573 /* MoyaLeagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A8124015F6E00368573 /* MoyaLeagesDataSource.swift */; };
 		A987959FA319DD85EA21B835 /* Pods_Football_LeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C643FA2B798BD7239A769A02 /* Pods_Football_LeagueTests.framework */; };
 		B667814021A1B33F003FA7DF /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667813F21A1B33F003FA7DF /* LeaguesPresenter.swift */; };
 		B667814221A1B8BD003FA7DF /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667814121A1B8BD003FA7DF /* LeagueCell.swift */; };
@@ -66,6 +72,12 @@
 		63EA992421A4372F00B2CC9D /* LeaguesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesResult.swift; sourceTree = "<group>"; };
 		63EA992621A4551600B2CC9D /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		82EB89A478FC74522D52DF9F /* Pods-Football League.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Football League.release.xcconfig"; path = "Pods/Target Support Files/Pods-Football League/Pods-Football League.release.xcconfig"; sourceTree = "<group>"; };
+		A0E22A752401460600368573 /* LeaguesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesViewModel.swift; sourceTree = "<group>"; };
+		A0E22A7724014B1100368573 /* LeaguesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesApi.swift; sourceTree = "<group>"; };
+		A0E22A7A24014F3B00368573 /* LeaguesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesDataSource.swift; sourceTree = "<group>"; };
+		A0E22A7D240158C600368573 /* fetchLeaguesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchLeaguesUseCase.swift; sourceTree = "<group>"; };
+		A0E22A7F24015DC000368573 /* RealmLeaguesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLeaguesDataSource.swift; sourceTree = "<group>"; };
+		A0E22A8124015F6E00368573 /* MoyaLeagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLeagesDataSource.swift; sourceTree = "<group>"; };
 		B667813F21A1B33F003FA7DF /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesPresenter.swift; sourceTree = "<group>"; };
 		B667814121A1B8BD003FA7DF /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
 		B667814321A1C169003FA7DF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -267,6 +279,12 @@
 			isa = PBXGroup;
 			children = (
 				B6E29AFD21A157320004D95B /* LeuguesViewController.swift */,
+				A0E22A752401460600368573 /* LeaguesViewModel.swift */,
+				A0E22A7A24014F3B00368573 /* LeaguesDataSource.swift */,
+				A0E22A8124015F6E00368573 /* MoyaLeagesDataSource.swift */,
+				A0E22A7F24015DC000368573 /* RealmLeaguesDataSource.swift */,
+				A0E22A7D240158C600368573 /* fetchLeaguesUseCase.swift */,
+				A0E22A7724014B1100368573 /* LeaguesApi.swift */,
 				63EA991F21A4283400B2CC9D /* LeagueCell */,
 				B667813F21A1B33F003FA7DF /* LeaguesPresenter.swift */,
 			);
@@ -443,14 +461,24 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Football League/Pods-Football League-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,16 +495,20 @@
 			files = (
 				B69E6E7721A30B3C002E9A37 /* Players.swift in Sources */,
 				63EA992321A436C100B2CC9D /* PlayersResult.swift in Sources */,
+				A0E22A7B24014F3B00368573 /* LeaguesDataSource.swift in Sources */,
 				B69E6E7921A30E7A002E9A37 /* PlayerCell.swift in Sources */,
 				63EA992521A4372F00B2CC9D /* LeaguesResult.swift in Sources */,
 				63EA991521A3F55600B2CC9D /* TeamInfoHeaderView.swift in Sources */,
 				B6E29B2E21A16CC50004D95B /* Leugue.swift in Sources */,
 				B69E6E7021A2E5CC002E9A37 /* TeamsPresenter.swift in Sources */,
 				B69E6E7221A2EA66002E9A37 /* UIViewControllerSegueExtension.swift in Sources */,
+				A0E22A7E240158C600368573 /* fetchLeaguesUseCase.swift in Sources */,
+				A0E22A762401460600368573 /* LeaguesViewModel.swift in Sources */,
 				B667814621A1C92C003FA7DF /* DataBaseManager.swift in Sources */,
 				B69E6E6C21A2E134002E9A37 /* Team.swift in Sources */,
 				B6E29B1F21A1596C0004D95B /* NetworkManager.swift in Sources */,
 				B667814021A1B33F003FA7DF /* LeaguesPresenter.swift in Sources */,
+				A0E22A8224015F6E00368573 /* MoyaLeagesDataSource.swift in Sources */,
 				B69E6E7521A306A4002E9A37 /* TeamInfoPresnter.swift in Sources */,
 				B6E29B2921A15B270004D95B /* TeamInfoViewController.swift in Sources */,
 				B667814221A1B8BD003FA7DF /* LeagueCell.swift in Sources */,
@@ -485,7 +517,9 @@
 				B6E29AFC21A157320004D95B /* AppDelegate.swift in Sources */,
 				B6E29B2621A15AD50004D95B /* TeamsViewController.swift in Sources */,
 				63EA992721A4551700B2CC9D /* Segues.swift in Sources */,
+				A0E22A7824014B1100368573 /* LeaguesApi.swift in Sources */,
 				63EA992121A4368200B2CC9D /* TeamsResult.swift in Sources */,
+				A0E22A8024015DC000368573 /* RealmLeaguesDataSource.swift in Sources */,
 				B6E29B2121A159950004D95B /* FootBallAppConstants.swift in Sources */,
 				B667814421A1C169003FA7DF /* UIViewExtension.swift in Sources */,
 				B6E29B3021A1741B0004D95B /* AppUrls.swift in Sources */,
@@ -649,7 +683,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Arabia-IT.Football-League";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -666,7 +700,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Arabia-IT.Football-League";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

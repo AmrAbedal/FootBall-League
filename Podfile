@@ -8,6 +8,9 @@ target 'Football League' do
   # Pods for Football League
   pod 'RealmSwift'
   pod 'SDWebImage', '~> 4.0'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
+  pod 'Moya/RxSwift', '~> 14.0'
 
 
   target 'Football LeagueTests' do
