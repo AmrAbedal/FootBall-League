@@ -30,7 +30,7 @@ class TeamsViewController: UIViewController {
     private func setupTeamsTable() {
         title = "Teams"
         registerTeamsTableCells()
-        teamsTableView.rowHeight = UITableViewAutomaticDimension
+        teamsTableView.rowHeight = UITableView.automaticDimension
         teamsTableView.estimatedRowHeight = 150
     }
     private func registerTeamsTableCells() {

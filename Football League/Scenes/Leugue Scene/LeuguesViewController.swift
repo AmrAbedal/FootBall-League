@@ -29,7 +29,7 @@ class LeuguesViewController: UIViewController {
     private func setupLeaguesTableview() {
         registerLeaguesTableCells()
         leaguesTableView.estimatedRowHeight = 100
-        leaguesTableView.rowHeight = UITableViewAutomaticDimension
+        leaguesTableView.rowHeight = UITableView.automaticDimension
     }
     private func registerLeaguesTableCells() {
         let leagueCellNib = UINib(nibName: LeagueCell.identifier, bundle: nil)
