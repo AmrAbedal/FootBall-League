@@ -26,7 +26,7 @@ struct DataBaseManager {
         do {
             let realm = try Realm()
             realm.safeWrite(code: {
-                realm.add(object, update: true)
+                realm.add(object, update: Realm.UpdatePolicy.modified)
             })
         }
             
