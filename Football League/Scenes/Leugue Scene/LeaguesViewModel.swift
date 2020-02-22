@@ -20,19 +20,32 @@ struct LeagueScreenData {
 }
 
 class LeaguesViewModel {
+    private var disposeBage = DisposeBag()
     private var dataSource: LeaguesDataSource
+    typealias loadLeagesUseCaseType = (LeaguesDataSource)->(Single<LeaguesScreenData>)
+    private var loadLeaguesUseCase: loadLeagesUseCaseType
     var leaguesSubject = BehaviorSubject<LeaguesScreenData>(value: .loading)
-    init(dataSource: LeaguesDataSource = MoyaLeagesDataSource()) {
+    init(dataSource: LeaguesDataSource = MoyaLeagesDataSource(),
+         loadLeaguesUseCase: @escaping loadLeagesUseCaseType = fetchLeagues) {
         self.dataSource = dataSource
-        dataSource.getLeagues().subscribe(onSuccess: {
-            reseult in
-            print(reseult)
-        }, onError: {
-            error in
-            print(error)
-        })
+        self.loadLeaguesUseCase = loadLeaguesUseCase
+        loadData()
+    }
+    private func loadData() {
+        loadLeaguesUseCase(dataSource).subscribe(onSuccess: {[weak self] leagueScreenData in
+            self?.leaguesSubject.onNext(leagueScreenData)
+        }, onError: { [weak self] error in
+            self?.leaguesSubject.onNext(.failure(error: "Server Error"))
+            }).disposed(by: disposeBage)
     }
     func didSelectRowAt(index: Int ) {
         
     }
+}
+
+
+func fetchLeagues(dataSource: LeaguesDataSource) -> Single<LeaguesScreenData> {
+    return dataSource.getLeagues().map({
+        return $0.screenData
+    })
 }
