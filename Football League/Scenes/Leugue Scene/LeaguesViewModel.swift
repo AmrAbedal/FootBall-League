@@ -43,9 +43,3 @@ class LeaguesViewModel {
     }
 }
 
-
-func fetchLeagues(dataSource: LeaguesDataSource) -> Single<LeaguesScreenData> {
-    return dataSource.getLeagues().map({
-        return $0.screenData
-    })
-}
