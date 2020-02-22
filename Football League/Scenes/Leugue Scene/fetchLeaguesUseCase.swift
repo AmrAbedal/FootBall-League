@@ -9,8 +9,18 @@
 import Foundation
 import RxSwift
 
-func fetchLeagues(dataSource: LeaguesDataSource) -> Single<LeaguesScreenData> {
-    return dataSource.getLeagues().map({
-        return $0.screenData
-    })
+func fetchLeagues(dataSource: LeaguesDataSource, localDataSource: LeaguesDataSource) -> Single<LeaguesScreenData> {
+    return dataSource.getLeagues()
+        .map({
+            return $0.screenData
+        })
+        .catchError({ error in
+            localDataSource.getLeagues()
+                .map({return $0.screenData})
+                .catchError({
+                    error in
+                    return .just(.failure(error: "No Iternet"))
+                })
+            }
+    )
 }
