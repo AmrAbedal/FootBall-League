@@ -20,7 +20,18 @@ struct LeagueScreenData {
 }
 
 class LeaguesViewModel {
+    private var dataSource: LeaguesDataSource
     var leaguesSubject = BehaviorSubject<LeaguesScreenData>(value: .loading)
+    init(dataSource: LeaguesDataSource = MoyaLeagesDataSource()) {
+        self.dataSource = dataSource
+        dataSource.getLeagues().subscribe(onSuccess: {
+            reseult in
+            print(reseult)
+        }, onError: {
+            error in
+            print(error)
+        })
+    }
     func didSelectRowAt(index: Int ) {
         
     }
