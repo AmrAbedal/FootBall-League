@@ -55,7 +55,7 @@ class DefaultLeaguesPresenter {
     private func fetchDataFromLocalStorage() {
         let leagues = localStorage.getObjects(ofType: League.self)
         if !leagues.isEmpty  {
-            self.leagues = leagues
+            self.leagues = Array(leagues)
             view?.updateData()
         }
         else {

@@ -29,7 +29,7 @@ class DefaultTeamsPresenter {
     func fetchTeamsFromLocalStorage(withLeagueId leagueID: Int) {
         let leagues = localStorage.getObjects(ofType: Team.self).filter({$0.leagueId == leagueID})
         if !leagues.isEmpty  {
-            self.teams = leagues
+            self.teams = Array(leagues)
             view?.updateData()
         }
         else {
