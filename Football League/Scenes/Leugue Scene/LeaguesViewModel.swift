@@ -10,12 +10,18 @@ import Foundation
 import RxSwift
 
 enum LeaguesScreenData {
-    case success([League])
+    case success([LeagueScreenData])
     case loading
     case failure(error:String)
+}
+struct LeagueScreenData {
+    let name: String
+    let hasMoreInfo: Bool
 }
 
 class LeaguesViewModel {
     var leaguesSubject = BehaviorSubject<LeaguesScreenData>(value: .loading)
-
+    func didSelectRowAt(index: Int ) {
+        
+    }
 }
