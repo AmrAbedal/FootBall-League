@@ -12,13 +12,13 @@ import RealmSwift
 struct DataBaseManager {
     static let shared  = DataBaseManager.init()
     private init() {}
-    func getObjects<T> (ofType type: T.Type) -> [T] where T: Object {
+    func getObjects<T> (ofType type: T.Type) -> List<T> where T: Object {
         do {
             let realm = try Realm()
-            return Array(realm.objects(type))
+            return realm.objects(type).resultList
         }
         catch {
-            return []
+            return List<T>()
         }
     }
     
@@ -49,3 +49,14 @@ extension Realm {
         }
     }
 }
+
+
+extension Results {
+    var resultList: List<Element> {
+     return  reduce(List<Element>()) { (list, element) -> List<Element> in
+            list.append(element)
+            return list
+        }
+    }
+}
+

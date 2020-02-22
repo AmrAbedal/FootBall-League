@@ -15,12 +15,3 @@ protocol LeaguesDataSource {
     
 }
 
-class MoyaLeagesDataSource: LeaguesDataSource {
-    let moyaProvider = MoyaProvider<LeaguesApi>()
-    func getLeagues() -> Single<LeaguesResult> {
-        return moyaProvider.rx.request(.leagues)
-            .map {
-                try JSONDecoder().decode(LeaguesResult.self, from: $0.data)
-        }
-    }
-}

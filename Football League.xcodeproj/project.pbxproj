@@ -21,6 +21,8 @@
 		A0E22A7824014B1100368573 /* LeaguesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A7724014B1100368573 /* LeaguesApi.swift */; };
 		A0E22A7B24014F3B00368573 /* LeaguesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A7A24014F3B00368573 /* LeaguesDataSource.swift */; };
 		A0E22A7E240158C600368573 /* fetchLeaguesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A7D240158C600368573 /* fetchLeaguesUseCase.swift */; };
+		A0E22A8024015DC000368573 /* RealmLeaguesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A7F24015DC000368573 /* RealmLeaguesDataSource.swift */; };
+		A0E22A8224015F6E00368573 /* MoyaLeagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E22A8124015F6E00368573 /* MoyaLeagesDataSource.swift */; };
 		A987959FA319DD85EA21B835 /* Pods_Football_LeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C643FA2B798BD7239A769A02 /* Pods_Football_LeagueTests.framework */; };
 		B667814021A1B33F003FA7DF /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667813F21A1B33F003FA7DF /* LeaguesPresenter.swift */; };
 		B667814221A1B8BD003FA7DF /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B667814121A1B8BD003FA7DF /* LeagueCell.swift */; };
@@ -74,6 +76,8 @@
 		A0E22A7724014B1100368573 /* LeaguesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesApi.swift; sourceTree = "<group>"; };
 		A0E22A7A24014F3B00368573 /* LeaguesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesDataSource.swift; sourceTree = "<group>"; };
 		A0E22A7D240158C600368573 /* fetchLeaguesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchLeaguesUseCase.swift; sourceTree = "<group>"; };
+		A0E22A7F24015DC000368573 /* RealmLeaguesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLeaguesDataSource.swift; sourceTree = "<group>"; };
+		A0E22A8124015F6E00368573 /* MoyaLeagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLeagesDataSource.swift; sourceTree = "<group>"; };
 		B667813F21A1B33F003FA7DF /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesPresenter.swift; sourceTree = "<group>"; };
 		B667814121A1B8BD003FA7DF /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
 		B667814321A1C169003FA7DF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 				B6E29AFD21A157320004D95B /* LeuguesViewController.swift */,
 				A0E22A752401460600368573 /* LeaguesViewModel.swift */,
 				A0E22A7A24014F3B00368573 /* LeaguesDataSource.swift */,
+				A0E22A8124015F6E00368573 /* MoyaLeagesDataSource.swift */,
+				A0E22A7F24015DC000368573 /* RealmLeaguesDataSource.swift */,
 				A0E22A7D240158C600368573 /* fetchLeaguesUseCase.swift */,
 				A0E22A7724014B1100368573 /* LeaguesApi.swift */,
 				63EA991F21A4283400B2CC9D /* LeagueCell */,
@@ -502,6 +508,7 @@
 				B69E6E6C21A2E134002E9A37 /* Team.swift in Sources */,
 				B6E29B1F21A1596C0004D95B /* NetworkManager.swift in Sources */,
 				B667814021A1B33F003FA7DF /* LeaguesPresenter.swift in Sources */,
+				A0E22A8224015F6E00368573 /* MoyaLeagesDataSource.swift in Sources */,
 				B69E6E7521A306A4002E9A37 /* TeamInfoPresnter.swift in Sources */,
 				B6E29B2921A15B270004D95B /* TeamInfoViewController.swift in Sources */,
 				B667814221A1B8BD003FA7DF /* LeagueCell.swift in Sources */,
@@ -512,6 +519,7 @@
 				63EA992721A4551700B2CC9D /* Segues.swift in Sources */,
 				A0E22A7824014B1100368573 /* LeaguesApi.swift in Sources */,
 				63EA992121A4368200B2CC9D /* TeamsResult.swift in Sources */,
+				A0E22A8024015DC000368573 /* RealmLeaguesDataSource.swift in Sources */,
 				B6E29B2121A159950004D95B /* FootBallAppConstants.swift in Sources */,
 				B667814421A1C169003FA7DF /* UIViewExtension.swift in Sources */,
 				B6E29B3021A1741B0004D95B /* AppUrls.swift in Sources */,
