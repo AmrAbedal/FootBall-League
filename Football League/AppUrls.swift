@@ -10,10 +10,10 @@ import Foundation
 
 struct AppUrls {
     private static let versionNumber = 2
-    private static let baseUrl = "http://api.football-data.org"
-    private static let competitions = "/competitions"
-    private static let teams = "/teams"
-    private static var version: String {
+    static let baseUrl = "http://api.football-data.org"
+    static let competitions = "/competitions"
+     static let teams = "/teams"
+    static var version: String {
         return "/v\(versionNumber)"
     }
     static var leagues = baseUrl + version + competitions

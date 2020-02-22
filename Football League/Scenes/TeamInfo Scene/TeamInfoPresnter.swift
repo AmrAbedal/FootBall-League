@@ -94,7 +94,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
     func fetchPlayerFromLocalStorage(withTeamId teamId: Int) {
         let players = localStorage.getObjects(ofType: Player.self).filter({$0.teamID == teamId})
         if !players.isEmpty  {
-            self.players = players
+            self.players = Array(players)
             view?.updateData()
         }
         else {

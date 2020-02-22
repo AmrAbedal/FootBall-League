@@ -26,4 +26,8 @@ class LeaguesResult : Object, Decodable {
         let competitions = try container.decodeIfPresent([League].self, forKey: .leagues) ?? [League()]
         self.leagues.append(objectsIn: competitions)
     }
+    var screenData: LeaguesScreenData {
+        return .success(self.leagues.map({ LeagueScreenData(name: $0.name ?? "", hasMoreInfo: false)}))
+    }
+
 }
