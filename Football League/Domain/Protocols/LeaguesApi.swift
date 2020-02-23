@@ -1,5 +1,5 @@
 //
-//  LeaguesDataSource.swift
+//  LeaguesApi.swift
 //  Football League
 //
 //  Created by Amr AbdelWahab on 2/22/20.
@@ -7,11 +7,7 @@
 //
 
 import Foundation
-import RxSwift
-import Moya
 
-protocol LeaguesDataSource {
-    func getLeagues() -> Single<LeaguesResult>
-    
+enum LeaguesApi {
+    case leagues , teams(leagueID: Int)
 }
-

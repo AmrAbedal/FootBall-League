@@ -27,5 +27,13 @@ class TeamsResult : Object, Decodable {
         self.teams.append(objectsIn: teams)
         
     }
-    
+    var screenData: TeamsScreenData {
+        return .success(self.teams.map({
+                TeamScreenData(id: $0.id,
+                               name: $0.name ?? "",
+                               shortName: $0.shortName ?? "",
+                               logo: $0.crestUrl ?? "")
+                
+            }))
+    }
 }

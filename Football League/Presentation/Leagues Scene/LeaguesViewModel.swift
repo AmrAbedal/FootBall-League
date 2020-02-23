@@ -9,16 +9,6 @@
 import Foundation
 import RxSwift
 
-enum LeaguesScreenData {
-    case success([LeagueScreenData])
-    case loading
-    case failure(error:String)
-}
-struct LeagueScreenData {
-    let name: String
-    let hasMoreInfo: Bool
-}
-
 class LeaguesViewModel {
     private var disposeBage = DisposeBag()
     private var dataSource: LeaguesDataSource
@@ -26,6 +16,7 @@ class LeaguesViewModel {
     typealias loadLeagesUseCaseType = (LeaguesDataSource,LeaguesDataSource)->(Single<LeaguesScreenData>)
     private var loadLeaguesUseCase: loadLeagesUseCaseType
     var leaguesSubject = BehaviorSubject<LeaguesScreenData>(value: .loading)
+    var openTeamsSubject = BehaviorSubject<Int?>(value: nil)
     init(dataSource: LeaguesDataSource = MoyaLeagesDataSource(),
          localDataSource: LeaguesDataSource = RealmLeaguesDataSource(),
          loadLeaguesUseCase: @escaping loadLeagesUseCaseType = fetchLeagues) {
@@ -37,12 +28,18 @@ class LeaguesViewModel {
     private func loadData() {
         loadLeaguesUseCase(dataSource,localDataSource).subscribe(onSuccess: {[weak self] leagueScreenData in
             self?.leaguesSubject.onNext(leagueScreenData)
-        }, onError: { [weak self] error in
-            self?.leaguesSubject.onNext(.failure(error: "Server Error"))
-            }).disposed(by: disposeBage)
+            }, onError: { [weak self] error in
+                self?.leaguesSubject.onNext(.failure(error: "Server Error"))
+        }).disposed(by: disposeBage)
     }
     func didSelectRowAt(index: Int ) {
-        
+        guard let leaguesScreenState = try? leaguesSubject.value(),
+            case .success(let leagues) = leaguesScreenState,
+            FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id)
+            else {
+                return
+        }
+        openTeamsSubject.onNext(leagues[index].id)
     }
 }
 

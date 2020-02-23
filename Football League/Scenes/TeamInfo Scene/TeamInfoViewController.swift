@@ -15,7 +15,7 @@ protocol TeamInfoView: class {
 
 class TeamInfoViewController: UIViewController {
     
-    var team: Team?
+    var team: TeamScreenData?
     let presenter: TeamInfoPresenter = DefaultTeamInfoPresenter()
     @IBOutlet weak var teamInfoTable: UITableView!
     
