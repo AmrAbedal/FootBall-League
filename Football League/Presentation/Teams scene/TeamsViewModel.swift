@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 import RxSwift
 
 class TeamsViewModel {
@@ -37,9 +36,8 @@ class TeamsViewModel {
         }).disposed(by: disposeBage)
     }
     func didSelectRowAt(index: Int ) {
-        guard let leaguesScreenState = try? teamsSubject.value(),
-            case .success(let teams) = leaguesScreenState,
-            FootBallAppConstants.avaliableLeageIds.contains(teams[index].id)
+        guard let teamsScreenState = try? teamsSubject.value(),
+            case .success(let teams) = teamsScreenState
             else {
                 return
         }

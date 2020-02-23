@@ -77,6 +77,7 @@ extension TeamsViewController: UITableViewDataSource {
         teamCell.configure(team: teams[indexPath.row])
         return teamCell
     }
+
     func presentTeamInfoViewController(withTeam team: TeamScreenData) {
         perform(segue: Segues.TeamInfoViewController.rawValue) { (teamsViewController: TeamInfoViewController) in
             teamsViewController.team = team
@@ -84,3 +85,8 @@ extension TeamsViewController: UITableViewDataSource {
     }
 }
 
+extension TeamsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        teamsViewModel.didSelectRowAt(index: indexPath.row)
+    }
+}
