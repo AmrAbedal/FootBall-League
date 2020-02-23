@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TeamCell: UITableViewCell {
     static let identifier = "TeamCell"
@@ -20,5 +21,11 @@ class TeamCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    func configure(team: TeamScreenData) {
 
+        teamImageView.sd_setImage(with: URL(string: team.logo), placeholderImage: nil)
+        
+        teamNameLabel.text = team.name
+        teamShotNameLabel.text = team.shortName
+    }
 }

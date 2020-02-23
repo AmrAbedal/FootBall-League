@@ -14,7 +14,7 @@ protocol TeamInfoPresenter: class {
     func teamShortName() -> String?
     func teamLogoUrl() -> String
     func attach(view: TeamInfoView)
-    func viewDidLoad(withTeam team: Team?)
+    func viewDidLoad(withTeam team: TeamScreenData?)
     func numOfPlayers() -> Int
     func playerNameForIndex(index: Int) -> String?
     func playerPositionForIndex(index: Int) -> String?
@@ -22,7 +22,7 @@ protocol TeamInfoPresenter: class {
 }
 
 class DefaultTeamInfoPresenter {
-    private var team: Team?
+    private var team: TeamScreenData?
     private var players : [Player] = []
     private let networkmanager = NetworkManager.shared
     private weak var view: TeamInfoView?
@@ -40,7 +40,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
     }
     
     func teamLogoUrl() -> String {
-        return team?.crestUrl ?? ""
+        return team?.logo ?? ""
     }
     
     
@@ -56,7 +56,7 @@ extension DefaultTeamInfoPresenter: TeamInfoPresenter {
         self.view = view
     }
     
-    func viewDidLoad(withTeam team: Team?) {
+    func viewDidLoad(withTeam team: TeamScreenData?) {
         guard let team = team else {
             print("show error message")
             return
