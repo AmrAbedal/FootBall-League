@@ -39,16 +39,16 @@ class LeaguesViewModel {
     private func loadData() {
         loadLeaguesUseCase(dataSource,localDataSource).subscribe(onSuccess: {[weak self] leagueScreenData in
             self?.leaguesSubject.onNext(leagueScreenData)
-        }, onError: { [weak self] error in
-            self?.leaguesSubject.onNext(.failure(error: "Server Error"))
-            }).disposed(by: disposeBage)
+            }, onError: { [weak self] error in
+                self?.leaguesSubject.onNext(.failure(error: "Server Error"))
+        }).disposed(by: disposeBage)
     }
     func didSelectRowAt(index: Int ) {
         guard let leaguesScreenState = try? leaguesSubject.value(),
             case .success(let leagues) = leaguesScreenState,
-        FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id)
-         else {
-            return
+            FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id)
+            else {
+                return
         }
         openTeamsSubject.onNext(leagues[index].id)
     }

@@ -19,44 +19,49 @@ class LeuguesViewController: UIViewController {
     private var leagues: [LeagueScreenData] = []
     @IBOutlet weak var leaguesTableView: UITableView!
     private lazy var leaguesViewModel = {
-       return LeaguesViewModel()
+        return LeaguesViewModel()
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLeaguesTableview()
         setupLeagesSubscribers()
     }
     private func setupLeaguesTableview() {
-          registerLeaguesTableCells()
-          leaguesTableView.estimatedRowHeight = 100
-          leaguesTableView.rowHeight = UITableView.automaticDimension
-      }
-      private func registerLeaguesTableCells() {
-          let leagueCellNib = UINib(nibName: LeagueCell.identifier, bundle: nil)
-          leaguesTableView.register(leagueCellNib, forCellReuseIdentifier: LeagueCell.identifier)
-      }
+        registerLeaguesTableCells()
+        leaguesTableView.estimatedRowHeight = 100
+        leaguesTableView.rowHeight = UITableView.automaticDimension
+    }
+    private func registerLeaguesTableCells() {
+        let leagueCellNib = UINib(nibName: LeagueCell.identifier, bundle: nil)
+        leaguesTableView.register(leagueCellNib, forCellReuseIdentifier: LeagueCell.identifier)
+    }
     private func setupLeagesSubscribers() {
         leaguesViewModel.leaguesSubject.subscribe({
             [weak self] event in
             if let element = event.element {
                 self?.handleLeaguesScreenData(screenData: element)
             }
-            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
+        leaguesViewModel.openTeamsSubject.subscribe({ [weak self]
+            event in
+            if let element = event.element , let leagueID = element {
+                self?.presentTeamsViewController(withLeagueId: leagueID)
+            }
+        }).disposed(by: disposeBag)
     }
+    
     private func handleLeaguesScreenData(screenData: LeaguesScreenData) {
         switch screenData {
         case .loading: break
         case .success(let leagues): handleLeagues(leagues: leagues)
-        case .failure(error: let error): break
+        case .failure: break
         }
     }
     private func handleLeagues(leagues: [LeagueScreenData]) {
         self.leagues = leagues
         leaguesTableView.reloadData()
     }
-    
-  
 }
 
 extension LeuguesViewController: LeagesView {
