@@ -9,17 +9,6 @@
 import Foundation
 import RxSwift
 
-enum LeaguesScreenData {
-    case success([LeagueScreenData])
-    case loading
-    case failure(error:String)
-}
-struct LeagueScreenData {
-    let id: Int
-    let name: String
-    let hasMoreInfo: Bool
-}
-
 class LeaguesViewModel {
     private var disposeBage = DisposeBag()
     private var dataSource: LeaguesDataSource

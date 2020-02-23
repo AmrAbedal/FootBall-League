@@ -1,10 +1,11 @@
 //
-//  LeaguesApi.swift
+//  LeaguesEndPoints.swift
 //  Football League
 //
-//  Created by Amr AbdelWahab on 2/22/20.
+//  Created by Amr AbdelWahab on 2/23/20.
 //  Copyright © 2020 Arabia-IT. All rights reserved.
 //
+
 
 import Foundation
 import RxSwift
@@ -12,8 +13,7 @@ import Moya
 import Alamofire
 
 
-enum LeaguesApi : TargetType {
-    case leagues
+extension LeaguesApi : TargetType {
     var baseURL: URL {
         switch self {
         case .leagues:
