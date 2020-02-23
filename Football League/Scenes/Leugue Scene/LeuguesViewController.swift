@@ -73,21 +73,18 @@ extension LeuguesViewController: LeagesView {
     }
     
     func updateData() {
-        print("data updated successfully")
         leaguesTableView.reloadData()
     }
 }
 
 extension LeuguesViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return leagues.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let leagueCell = tableView.dequeueReusableCell(withIdentifier: LeagueCell.identifier) as! LeagueCell
-        leagueCell.leagueNameLabel.text = leagues[indexPath.row].name
-        leagueCell.containerView.backgroundColor = leagues[indexPath.row].hasMoreInfo ? UIColor.green : .red
+        leagueCell.configure(league: leagues[indexPath.row])
         return leagueCell
     }
 }
