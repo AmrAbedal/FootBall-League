@@ -11,5 +11,6 @@ import Foundation
 struct TeamScreenData {
     let id: Int
     let name: String
-    let hasMoreInfo: Bool
+    let shortName: String
+    let logo: String
 }

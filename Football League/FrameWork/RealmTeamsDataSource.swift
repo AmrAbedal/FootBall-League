@@ -12,10 +12,10 @@ import Realm
 import RealmSwift
 
 class RealmTeamsDataSource: TeamsDataSource {
-    func getLeagues() -> Single<TeamsResult> {
-        let leagues = DataBaseManager.shared.getObjects(ofType: Team.self)
-        let leaguesRersult = TeamsResult()
-        leaguesRersult.teams = leagues
-        return Single.just(leaguesRersult)
+    func getTeamsWith(leagueID: Int) -> Single<TeamsResult> {
+        let teams = DataBaseManager.shared.getObjects(ofType: Team.self).filter("leagueId == \(leagueID)")
+        let teamsResult = TeamsResult()
+        teamsResult.teams = teams.resultList
+        return Single.just(teamsResult)
     }
 }

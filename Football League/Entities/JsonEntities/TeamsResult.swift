@@ -27,11 +27,13 @@ class TeamsResult : Object, Decodable {
         self.teams.append(objectsIn: teams)
         
     }
-   var screenData: TeamsScreenData {
-          return .success(self.teams.map({
-              TeamScreenData(id: $0.id,
+    var screenData: TeamsScreenData {
+        return .success(self.teams.map({
+                TeamScreenData(id: $0.id,
                                name: $0.name ?? "",
-                               hasMoreInfo: FootBallAppConstants.avaliableLeageIds.contains($0.id))}))
-      }
-    
+                               shortName: $0.shortName ?? "",
+                               logo: $0.crestUrl ?? "")
+                
+            }))
+    }
 }

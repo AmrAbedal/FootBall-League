@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol TeamsDataSource {
-    func getLeagues() -> Single<TeamsResult>
+    func getTeamsWith(leagueID: Int) -> Single<TeamsResult>
 }

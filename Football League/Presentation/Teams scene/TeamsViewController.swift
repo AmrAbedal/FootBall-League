@@ -22,7 +22,7 @@ class TeamsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTeamsTable()
-       
+       setupTeamsSubscribers()
     }
     private func setupTeamsTable() {
         title = "Teams"
@@ -34,22 +34,22 @@ class TeamsViewController: UIViewController {
         let teamCellNib = UINib(nibName: TeamCell.identifier, bundle: nil)
         teamsTableView.register(teamCellNib, forCellReuseIdentifier: TeamCell.identifier)
     }
-    private func setupLeagesSubscribers() {
-         teamsViewModel.leaguesSubject.subscribe({
+    private func setupTeamsSubscribers() {
+         teamsViewModel.teamsSubject.subscribe({
              [weak self] event in
              if let element = event.element {
-                 self?.handleLeaguesScreenData(screenData: element)
+                 self?.handleteamsScreenData(screenData: element)
              }
          }).disposed(by: disposeBag)
-         teamsViewModel.openTeamsSubject.subscribe({ [weak self]
+         teamsViewModel.openTeamInfoSubject.subscribe({ [weak self]
              event in
-             if let element = event.element , let leagueID = element {
-//                 self?.presentTeamInfoViewController(withTeam: leagueID)
+             if let element = event.element , let team = element {
+                 self?.presentTeamInfoViewController(withTeam: team)
              }
          }).disposed(by: disposeBag)
      }
      
-     private func handleLeaguesScreenData(screenData: TeamsScreenData) {
+     private func handleteamsScreenData(screenData: TeamsScreenData) {
          switch screenData {
          case .loading: break
          case .success(let leagues): handleLeagues(leagues: leagues)
@@ -74,13 +74,10 @@ extension TeamsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let teamCell = tableView.dequeueReusableCell(withIdentifier: TeamCell.identifier) as! TeamCell
-//        teamCell.teamImageView.sd_setImage(with: URL(string: presenter.teamLogoUrlForIndex(index: indexPath.row)), placeholderImage: nil)
-//
-//        teamCell.teamNameLabel.text = presenter.teamNameForIndex(index: indexPath.row)
-//        teamCell.teamShotNameLabel.text = presenter.teamShortNameForIndex(index: indexPath.row)
+        teamCell.configure(team: teams[indexPath.row])
         return teamCell
     }
-    func presentTeamInfoViewController(withTeam team: Team) {
+    func presentTeamInfoViewController(withTeam team: TeamScreenData) {
         perform(segue: Segues.TeamInfoViewController.rawValue) { (teamsViewController: TeamInfoViewController) in
             teamsViewController.team = team
         }

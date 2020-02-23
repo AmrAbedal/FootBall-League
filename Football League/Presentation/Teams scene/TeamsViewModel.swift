@@ -11,38 +11,38 @@ import RealmSwift
 import RxSwift
 
 class TeamsViewModel {
-     let leagueID: Int
+    let leagueID: Int
     private var disposeBage = DisposeBag()
-      private var dataSource: TeamsDataSource
-      private var localDataSource: TeamsDataSource
-      typealias loadLeagesUseCaseType = (TeamsDataSource,TeamsDataSource)->(Single<TeamsScreenData>)
-      private var loadLeaguesUseCase: loadLeagesUseCaseType
-      var leaguesSubject = BehaviorSubject<TeamsScreenData>(value: .loading)
-      var openTeamsSubject = BehaviorSubject<Int?>(value: nil)
-      init(leagueID: Int,
-           dataSource: TeamsDataSource = MoyaTeamsDataSource(),
-           localDataSource: TeamsDataSource = RealmTeamsDataSource(),
-           loadLeaguesUseCase: @escaping loadLeagesUseCaseType = fetchTeams) {
-          self.dataSource = dataSource
-          self.localDataSource = localDataSource
-          self.loadLeaguesUseCase = loadLeaguesUseCase
-           self.leagueID = leagueID
-          loadData()
-      }
-      private func loadData() {
-          loadLeaguesUseCase(dataSource,localDataSource).subscribe(onSuccess: {[weak self] leagueScreenData in
-              self?.leaguesSubject.onNext(leagueScreenData)
-              }, onError: { [weak self] error in
-                  self?.leaguesSubject.onNext(.failure(error: "Server Error"))
-          }).disposed(by: disposeBage)
-      }
-      func didSelectRowAt(index: Int ) {
-          guard let leaguesScreenState = try? leaguesSubject.value(),
-              case .success(let leagues) = leaguesScreenState,
-              FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id)
-              else {
-                  return
-          }
-          openTeamsSubject.onNext(leagues[index].id)
-      }
+    private var dataSource: TeamsDataSource
+    private var localDataSource: TeamsDataSource
+    typealias loadTeamsUseCaseType = (Int,TeamsDataSource,TeamsDataSource)->(Single<TeamsScreenData>)
+    private var loadteamsUseCase: loadTeamsUseCaseType
+    var teamsSubject = BehaviorSubject<TeamsScreenData>(value: .loading)
+    var openTeamInfoSubject = BehaviorSubject<TeamScreenData?>(value: nil)
+    init(leagueID: Int,
+         dataSource: TeamsDataSource = MoyaTeamsDataSource(),
+         localDataSource: TeamsDataSource = RealmTeamsDataSource(),
+         loadLeaguesUseCase: @escaping loadTeamsUseCaseType = fetchTeams) {
+        self.dataSource = dataSource
+        self.localDataSource = localDataSource
+        self.loadteamsUseCase = loadLeaguesUseCase
+        self.leagueID = leagueID
+        loadData()
+    }
+    private func loadData() {
+        loadteamsUseCase(leagueID,dataSource,localDataSource).subscribe(onSuccess: {[weak self] leagueScreenData in
+            self?.teamsSubject.onNext(leagueScreenData)
+            }, onError: { [weak self] error in
+                self?.teamsSubject.onNext(.failure(error: "Server Error"))
+        }).disposed(by: disposeBage)
+    }
+    func didSelectRowAt(index: Int ) {
+        guard let leaguesScreenState = try? teamsSubject.value(),
+            case .success(let teams) = leaguesScreenState,
+            FootBallAppConstants.avaliableLeageIds.contains(teams[index].id)
+            else {
+                return
+        }
+        openTeamInfoSubject.onNext(teams[index])
+    }
 }

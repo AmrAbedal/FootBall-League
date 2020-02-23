@@ -12,8 +12,8 @@ import Moya
 
 class MoyaTeamsDataSource: TeamsDataSource {
     let moyaProvider = MoyaProvider<LeaguesApi>()
-    func getLeagues() -> Single<TeamsResult> {
-        return moyaProvider.rx.request(.leagues)
+    func getTeamsWith(leagueID: Int) -> Single<TeamsResult> {
+        return moyaProvider.rx.request(.teams(leagueID: leagueID))
             .map {
                 try JSONDecoder().decode(TeamsResult.self, from: $0.data)
         }
