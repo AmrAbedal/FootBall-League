@@ -16,21 +16,22 @@ import Alamofire
 extension LeaguesApi : TargetType {
     var baseURL: URL {
         switch self {
-        case .leagues:
+        case .leagues , .teams:
             return URL.init(string: AppUrls.baseUrl + AppUrls.version)!
         }
     }
     
     var path: String  {
            switch self {
-           case .leagues:
+           case .leagues :
             return AppUrls.competitions
+           case .teams(leagueID: let leagueID):  return AppUrls.competitions  + "/\(leagueID)" + AppUrls.teams
            }
        }
     
     var method: HTTPMethod  {
            switch self {
-           case .leagues:
+           case .leagues ,.teams:
             return .get
            }
        }

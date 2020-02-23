@@ -9,5 +9,5 @@
 import Foundation
 
 enum LeaguesApi {
-    case leagues
+    case leagues , teams(leagueID: Int)
 }

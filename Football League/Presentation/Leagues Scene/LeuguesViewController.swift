@@ -9,11 +9,6 @@
 import UIKit
 import RxSwift
 
-protocol LeagesView: class {
-    func updateData()
-    func presentTeamsViewController(withLeagueId leagueId: Int)
-}
-
 class LeuguesViewController: UIViewController {
     private var disposeBag = DisposeBag()
     private var leagues: [LeagueScreenData] = []
@@ -27,15 +22,18 @@ class LeuguesViewController: UIViewController {
         setupLeaguesTableview()
         setupLeagesSubscribers()
     }
+    
     private func setupLeaguesTableview() {
         registerLeaguesTableCells()
         leaguesTableView.estimatedRowHeight = 100
         leaguesTableView.rowHeight = UITableView.automaticDimension
     }
+    
     private func registerLeaguesTableCells() {
         let leagueCellNib = UINib(nibName: LeagueCell.identifier, bundle: nil)
         leaguesTableView.register(leagueCellNib, forCellReuseIdentifier: LeagueCell.identifier)
     }
+    
     private func setupLeagesSubscribers() {
         leaguesViewModel.leaguesSubject.subscribe({
             [weak self] event in
@@ -58,20 +56,16 @@ class LeuguesViewController: UIViewController {
         case .failure: break
         }
     }
+    
     private func handleLeagues(leagues: [LeagueScreenData]) {
         self.leagues = leagues
         leaguesTableView.reloadData()
     }
-}
-
-extension LeuguesViewController: LeagesView {
-    
     func presentTeamsViewController(withLeagueId leagueId: Int) {
         perform(segue: Segues.TeamsViewController.rawValue) { (teamsViewController: TeamsViewController) in
             teamsViewController.leagueId = leagueId
         }
     }
-    
     func updateData() {
         leaguesTableView.reloadData()
     }
