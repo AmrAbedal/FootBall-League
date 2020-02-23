@@ -28,7 +28,7 @@ func fetchLeagues(dataSource: LeaguesDataSource, localDataSource: LeaguesDataSou
                     if !$0.leagues.isEmpty {
                         return $0.screenData
                     } else {
-                        return .failure(error: "No Iternet OR Cached Data ")
+                        return .failure(error: "No Iternet OR Cached Data")
                     }
                 })
                 .catchError({ _ in

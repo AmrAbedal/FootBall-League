@@ -86,7 +86,7 @@ extension DefaultLeaguesPresenter: LeaguesPresenter {
         guard FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id) else {
             return
         }
-        view?.presentTeamsViewController(withLeagueId:leagues[index].id )
+        view?.presentTeamsViewController(withLeagueId:leagues[index].id)
     }
     
     func attach(view: LeagesView) {

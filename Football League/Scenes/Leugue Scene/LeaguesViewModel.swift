@@ -15,6 +15,7 @@ enum LeaguesScreenData {
     case failure(error:String)
 }
 struct LeagueScreenData {
+    let id: Int
     let name: String
     let hasMoreInfo: Bool
 }
@@ -26,6 +27,7 @@ class LeaguesViewModel {
     typealias loadLeagesUseCaseType = (LeaguesDataSource,LeaguesDataSource)->(Single<LeaguesScreenData>)
     private var loadLeaguesUseCase: loadLeagesUseCaseType
     var leaguesSubject = BehaviorSubject<LeaguesScreenData>(value: .loading)
+    var openTeamsSubject = BehaviorSubject<Int?>(value: nil)
     init(dataSource: LeaguesDataSource = MoyaLeagesDataSource(),
          localDataSource: LeaguesDataSource = RealmLeaguesDataSource(),
          loadLeaguesUseCase: @escaping loadLeagesUseCaseType = fetchLeagues) {
@@ -42,7 +44,13 @@ class LeaguesViewModel {
             }).disposed(by: disposeBage)
     }
     func didSelectRowAt(index: Int ) {
-        
+        guard let leaguesScreenState = try? leaguesSubject.value(),
+            case .success(let leagues) = leaguesScreenState,
+        FootBallAppConstants.avaliableLeageIds.contains(leagues[index].id)
+         else {
+            return
+        }
+        openTeamsSubject.onNext(leagues[index].id)
     }
 }
 

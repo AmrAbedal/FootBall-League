@@ -27,7 +27,9 @@ class LeaguesResult : Object, Decodable {
         self.leagues.append(objectsIn: competitions)
     }
     var screenData: LeaguesScreenData {
-        return .success(self.leagues.map({ LeagueScreenData(name: $0.name ?? "", hasMoreInfo: false)}))
+        return .success(self.leagues.map({
+            LeagueScreenData(id: $0.id,
+                             name: $0.name ?? "",
+                             hasMoreInfo: FootBallAppConstants.avaliableLeageIds.contains($0.id))}))
     }
-
 }
